@@ -1,5 +1,6 @@
 NAME				=	push_swap
 BONUS				=	bonus	
+BONUS_EXEC			=	checker_scarboni
 MAKE_LIBFT			=	makelibft
 LIBFTPATH			=	libft/
 LIBFT_AR			=	libft.a
@@ -11,11 +12,14 @@ LIBFT_PATH			= libft/
 OBJ_PATHS_INIT				= 	$(OBJ_PATH)
 ## No need for a \ on the last line
 HEADERS_FILES				=	push_swap.h
-SRC_FILES					=	error.c			\
+MAIN_FILES					=	main.c
+BONUS_FILES					=	bonus.c
+
+SRC_FILES					=	check_order.c	\
+								error.c			\
 								free_env.c		\
 								init_a.c		\
 								init_env.c		\
-								main.c			\
 								pa.c			\
 								pb.c			\
 								print_stack.c	\
@@ -35,11 +39,15 @@ SRC_FILES					=	error.c			\
 								switch_front_two.c
 
 OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
+OBJMAIN_FILES	= 	$(MAIN_FILES:.c=.o)			## get all .o names from .c names
+OBJBONUS_FILES	= 	$(BONUS_FILES:.c=.o)			## get all .o names from .c names
 
 OBJ_FILES = $(OBJREGULAR_FILES)
 
 SRC 		= $(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJ 		= $(addprefix $(OBJ_PATH), $(OBJ_FILES))
+OBJMAIN 		= $(addprefix $(OBJ_PATH), $(OBJMAIN_FILES))
+OBJBONUS 		= $(addprefix $(OBJ_PATH), $(OBJBONUS_FILES))
 
 CC			=	clang
 
@@ -64,10 +72,13 @@ $(OBJ_PATH)%.o	:	$(SRC_PATH)%.c $(HEADERS_FILES)
 $(OBJ_PATHS_INIT)	:
 	mkdir -p  $@  
 
-$(NAME)			: 	$(OBJ)   $(addprefix $(LIBFTPATH),$(LIBFT_AR))
-	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)  $(INC) 
+$(NAME)			: 	$(OBJ) $(OBJMAIN) $(addprefix $(LIBFTPATH),$(LIBFT_AR))
+	$(CC) -o $(NAME) $(OBJ) $(OBJMAIN) $(LDFLAGS)  $(INC) 
 
-$(BONUS)		: all
+$(BONUS_EXEC)	: 	$(OBJ) $(OBJBONUS) $(addprefix $(LIBFTPATH),$(LIBFT_AR))
+	$(CC) -o $(BONUS_EXEC) $(OBJ) $(OBJBONUS)  $(LDFLAGS)  $(INC)
+
+$(BONUS)		: all $(BONUS_EXEC)
 		
 clean_local		:									## delete all .o
 	$(RM) $(OBJ) $(OBJBONUS)
@@ -77,7 +88,7 @@ clean			:									## delete all .o
 	$(MAKE) -C $(LIBFT_PATH) clean	
 
 fclean			:	clean_local							## clean + delete executable
-	$(RM) $(NAMETEST) $(NAME)
+	$(RM) $(NAMETEST) $(NAME) $(BONUS_EXEC)
 	$(MAKE) -C $(LIBFT_PATH) fclean					
 
 re				:	fclean all							## delete all .o and recompile all. Must use when editing a .h

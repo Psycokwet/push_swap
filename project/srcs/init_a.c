@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 11:35:58 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 13:36:19 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,40 @@ static void	parse_one_arg(t_env *env, const char *argv_i)
 	ft_lstadd_back(&(env->a.head), new_node);
 }
 
+static void	get_ints_from_line(t_env *env, const char *line)
+{
+	char	**splitted;
+	int		i;
+
+	splitted = ft_split(line, ' ');
+	if (!splitted[0])
+	{
+		free(splitted);
+		error(env, ERROR_NOT_INTEGER);
+	}
+	i = 0;
+	while (splitted[i])
+	{
+		parse_one_arg(env, splitted[i]);
+		i++;
+	}
+	free_array(splitted);
+	splitted = NULL;
+}
+
+
 void	init_a(t_env *env, const char **argv, int argc)
 {
 	int		i;
 
 	i = 1;
-	env->a.head = NULL;
+	env->a.head = NULL;	
 	while (i < argc)
 	{
-		parse_one_arg(env, argv[i]);
+		get_ints_from_line(env, argv[i]);
+		// parse_one_arg(env, argv[i]);
 		i++;
 	}
-	print_stack(env->a);
+	// print_stack(env->a);
+	// check_order(env->a);
 }

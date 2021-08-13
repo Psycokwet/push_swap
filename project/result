@@ -1,31 +1,20 @@
 Start script
 Test:0 ARGS: 4 67 3 87 23
 
-Start stack
-4
-67
-3
-87
-23
-End stack
+Naked output
 
-Test:1 ARGS: 3 2147483647 2 32147483647 -2147483648 b
+checker output
+KO
+my checker output
+[0][]
+KO
 
-Error
-One or more inputs is too big
+Test:1 ARGS: 3 4 23 67 87
 
-Test:2 ARGS: 3 2147483647 2 b
+Naked output
 
-Error
-One or more inputs are not an integer
-
-Test:3 ARGS: 3 2147483647 2 5 5
-
-Error
-There is duplicates in the selection
-
-Test:4 ARGS: 3 2147483647 2 5 3
-
-Error
-There is duplicates in the selection
+checker output
+OK
+my checker output
+OK
 

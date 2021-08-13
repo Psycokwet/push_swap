@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 11:25:48 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 14:56:33 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@
 # define ERROR_NOT_INTEGER	1
 # define ERROR_TOO_BIG	    2
 # define ERROR_DUPLICATES	3
+
+# define ORDERED		0
+# define NOT_ORDERED	1
+
+# define MIN_INT	-2147483648
 
 // typedef struct s_node
 // {
@@ -54,6 +59,7 @@ typedef struct s_env
 ** ************************************************************************** **
 */
 
+int		check_order(t_stack stack);
 void	error(t_env *env, int code);
 void	free_env(t_env *env);
 void	init_a(t_env *env, const char **argv, int argc);

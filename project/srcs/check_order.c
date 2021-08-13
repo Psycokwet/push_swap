@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_order.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 14:40:05 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:02:59 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	main(int argc, char const *argv[])
+static int	check_order_int(t_list *lst, int prev)
 {
-	t_env	env;
+	if (!lst)
+		return (ORDERED);
+	if(prev >= *(int*)lst->content)
+		return (NOT_ORDERED);
+	return (check_order_int(lst->next, *(int*)lst->content));
+}
 
-	init_env(&env, argv, argc);
-	free_env(&env);
-	return (0);
+int	check_order(t_stack stack)
+{
+	if (stack.head)
+		return (check_order_int(stack.head, MIN_INT));
+	return (ORDERED);
 }
