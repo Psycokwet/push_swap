@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 14:56:33 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:15:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,28 @@
 
 # define EXIT_NORMAL			0
 
-# define MAX_ERRORS			3
-# define ERROR_NOT_INTEGER	1
-# define ERROR_TOO_BIG	    2
-# define ERROR_DUPLICATES	3
+# define MAX_ERRORS							4
+# define ERROR_NOT_INTEGER					1
+# define ERROR_TOO_BIG	   					2
+# define ERROR_DUPLICATES					3
+# define ERROR_INST_DONT_EXIST_OR_INCORRECT	4
+
+typedef struct s_error
+{
+	int			error_code;
+	const char	*id_error;
+	const char	*full_error;
+}	t_error;
+
+static const t_error	g_errors[MAX_ERRORS] = {
+	(t_error){ERROR_NOT_INTEGER, "ERROR_NOT_INTEGER",
+		"One or more inputs are not an integer"},
+	(t_error){ERROR_TOO_BIG, "ERROR_TOO_BIG", "One or more inputs is too big"},
+	(t_error){ERROR_DUPLICATES, "ERROR_DUPLICATES",
+		"There is duplicates in the selection"},
+	(t_error){ERROR_INST_DONT_EXIST_OR_INCORRECT, "ERROR_INST_DONT_EXIST_OR_INCORRECT",
+		"The specified instruction doesn't exist or is incorreclty formatted"},
+};
 
 # define ORDERED		0
 # define NOT_ORDERED	1

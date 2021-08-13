@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 15:06:52 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:12:10 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,14 @@ static const t_action_type	g_actions_types[MAX_ACTION_TYPE] = {
 int         main(int argc, const char **argv)
 {
 	t_env	env;
+	char	*line2;
+	int		ret;
 
 	init_env(&env, argv, argc);
-	char * line2 = NULL;
-	int ret = 1;
-
+	if (!env.a.head)
+		return (EXIT_SUCCESS);
+	line2 = NULL;
+	ret = 1;
 	while (ret == 1){
 		if(env.b.head == NULL && check_order(*(&env.a)) == ORDERED)
 		{

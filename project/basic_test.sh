@@ -33,17 +33,17 @@ function testeur ()
 	ARG="3 4 23 67 87"
 	unit_test
 
-	# ARG="3  2147483647 2 32147483647 -2147483648 b"
-	# unit_test
+	ARG="3  2147483647 2 32147483647 -2147483648 b"
+	unit_test
 
-	# ARG="3  2147483647 2 b"
-	# unit_test
+	ARG="3  2147483647 2 b"
+	unit_test
 
-	# ARG="3  2147483647 2 5 5"
-	# unit_test
+	ARG="3  2147483647 2 5 5"
+	unit_test
 
-	# ARG="3  2147483647 2 5 3"
-	# unit_test
+	ARG="3  2147483647 2 5 3"
+	unit_test
 
 }
 
