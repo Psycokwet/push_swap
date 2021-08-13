@@ -19,6 +19,7 @@ SRC_FILES					=	error.c			\
 								pa.c			\
 								pb.c			\
 								print_stack.c	\
+								push.c			\
 								quit.c			\
 								ra.c			\
 								rb.c			\

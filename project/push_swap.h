@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 10:27:25 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 10:39:53 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	init_env(t_env *env, const char **argv, int argc);
 void	pa(t_env *env);
 void	pb(t_env *env);
 void	print_stack(t_stack stack);
+void	push(t_stack *giver, t_stack *taker);
 void	quit(t_env *env, const char *message, int code, int fd);
 void	ra(t_env *env);
 void	rb(t_env *env);
