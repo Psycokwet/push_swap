@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 10:58:44 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:03:28 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	push(t_stack *giver, t_stack *taker);
 void	quit(t_env *env, const char *message, int code, int fd);
 void	ra(t_env *env);
 void	rb(t_env *env);
+void	reverse_rotate(t_stack *stack);
 void	rotate(t_stack *stack);
 void	rr(t_env *env);
 void	rra(t_env *env);

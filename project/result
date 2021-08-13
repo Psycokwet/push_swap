@@ -55,6 +55,15 @@ Start stack
 End stack
 Start stack
 End stack
+Start stack
+4
+67
+3
+87
+23
+End stack
+Start stack
+End stack
 
 Test:1 ARGS: 3 2147483647 2 32147483647 -2147483648 b
 
