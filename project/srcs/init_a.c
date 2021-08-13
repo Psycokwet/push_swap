@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 10:19:00 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 10:30:42 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,12 @@ void	init_a(t_env *env, const char **argv, int argc)
 		i++;
 	}
 	print_stack(env->a);
+	sa(env);
+	print_stack(env->a);
+	print_stack(env->b);
+	sb(env);
+	print_stack(env->b);
+	ss(env);
+	print_stack(env->a);
+	print_stack(env->b);
 }

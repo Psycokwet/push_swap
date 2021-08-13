@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 00:50:14 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 10:27:25 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	rrr(t_env *env);
 void	sa(t_env *env);
 void	sb(t_env *env);
 void	ss(t_env *env);
+void	switch_front_two(t_stack *stack);
 
 // write
 // read

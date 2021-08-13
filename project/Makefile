@@ -28,7 +28,8 @@ SRC_FILES					=	error.c			\
 								rrr.c			\
 								sa.c			\
 								sb.c			\
-								ss.c
+								ss.c			\
+								switch_front_two.c
 
 OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
 
