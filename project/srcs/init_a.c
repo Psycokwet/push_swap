@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 10:48:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:01:56 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	init_a(t_env *env, const char **argv, int argc)
 
 	i = 1;
 	env->a.head = NULL;
-	env->a.tail = NULL;
 	while (i < argc)
 	{
 		j = 0;
@@ -74,7 +73,6 @@ void	init_a(t_env *env, const char **argv, int argc)
 		*value = tmp;
 		new_node = ft_lstnew(value);
 		ft_lstadd_back(&(env->a.head), new_node);
-		env->a.tail = new_node;
 		i++;
 	}
 	print_stack(env->a);
@@ -91,6 +89,9 @@ void	init_a(t_env *env, const char **argv, int argc)
 	print_stack(env->a);
 	print_stack(env->b);
 	pa(env);
+	print_stack(env->a);
+	print_stack(env->b);
+	rr(env);
 	print_stack(env->a);
 	print_stack(env->b);
 }

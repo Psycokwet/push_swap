@@ -23,6 +23,7 @@ SRC_FILES					=	error.c			\
 								quit.c			\
 								ra.c			\
 								rb.c			\
+								rotate.c		\
 								rr.c			\
 								rra.c			\
 								rrb.c			\

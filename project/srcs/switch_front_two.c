@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 10:26:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 10:56:27 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,4 @@ void	switch_front_two(t_stack *stack)
 
 	if(first_then_second->next != NULL)
 		return;
-	stack->tail = first_then_second;
 }
