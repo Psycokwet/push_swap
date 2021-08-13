@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 15:33:48 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:44:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,28 +81,21 @@ int         main(int argc, const char **argv)
 		return (EXIT_SUCCESS);
 	line2 = NULL;
 	ret = 1;
-	while (ret == 1){
-		if(env.b.head == NULL && check_order(*(&env.a)) == ORDERED)
-		{
-			printf("OK\n");
-			free_env(&env);
-			free(line2);
-			return (EXIT_SUCCESS);
-		}
-		// else 
-		// {
-		// 	print_stack(*(&env.a));
-		// 	print_stack(*(&env.b));
-		// }
+	while (ret == 1)
+	{
 		ret = get_next_line(STDIN_FILENO, &line2);
-		// printf("[%d][%s]\n", ret , line2); //debug
+		if (ret == EXIT_READ_CLOSED)
+		{
+			free(line2);
+			break;
+		}
 		ret_action = start_action(&env, line2);
 		free(line2);
 		if (ret_action != EXIT_ACTION_FOUND)
 			error(&env, ret_action);
 		
 	}
-	if(env.b.head == NULL && check_order(*(&env.a)) == ORDERED)
+	if (env.b.head == NULL && check_order(*(&env.a)) == ORDERED)
 		printf("OK\n");
 	else
 		printf("KO\n");
