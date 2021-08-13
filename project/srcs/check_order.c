@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 15:02:59 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:54:20 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	check_order_int(t_list *lst, int prev)
 {
 	if (!lst)
 		return (ORDERED);
-	if(prev >= *(int*)lst->content)
+	if (prev >= *(int *)lst->content)
 		return (NOT_ORDERED);
-	return (check_order_int(lst->next, *(int*)lst->content));
+	return (check_order_int(lst->next, *(int *)lst->content));
 }
 
 int	check_order(t_stack stack)

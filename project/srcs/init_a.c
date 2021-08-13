@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 13:36:19 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:53:46 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,19 +91,15 @@ static void	get_ints_from_line(t_env *env, const char *line)
 	splitted = NULL;
 }
 
-
 void	init_a(t_env *env, const char **argv, int argc)
 {
 	int		i;
 
 	i = 1;
-	env->a.head = NULL;	
+	env->a.head = NULL;
 	while (i < argc)
 	{
 		get_ints_from_line(env, argv[i]);
-		// parse_one_arg(env, argv[i]);
 		i++;
 	}
-	// print_stack(env->a);
-	// check_order(env->a);
 }

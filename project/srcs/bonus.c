@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 15:44:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:59:10 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define MAX_ACTION_TYPE			12
 #define EXIT_ACTION_FOUND		0
 
-typedef struct			s_str
+typedef struct s_str
 {
 	char				*str;
 	size_t				size;
@@ -31,7 +31,7 @@ typedef struct s_action_type
 	void	(*action)(t_env	*);
 }	t_action_type;
 
-static void print_both(t_env *env)
+static void	print_both(t_env *env)
 {
 	print_stack(env->a);
 	print_stack(env->b);
@@ -54,22 +54,32 @@ static const t_action_type	g_actions_types[MAX_ACTION_TYPE] = {
 
 static int	start_action(t_env *env, const char *code)
 {
-	int i;
+	int	i;
 
 	i = MAX_ACTION_TYPE;
 	while (--i >= 0)
 	{
 		if (ft_strncmp(g_actions_types[i].code.str, code,
-			g_actions_types[i].code.size) == 0)
-			{
-				g_actions_types[i].action(env);
-				return (EXIT_ACTION_FOUND);
-			}
+				g_actions_types[i].code.size) == 0)
+		{
+			g_actions_types[i].action(env);
+			return (EXIT_ACTION_FOUND);
+		}
 	}
 	return (ERROR_INST_DONT_EXIST_OR_INCORRECT);
 }
 
-int         main(int argc, const char **argv)
+static int	print_result(t_env *env)
+{
+	if (env->b.head == NULL && check_order(env->a) == ORDERED)
+		printf("OK\n");
+	else
+		printf("KO\n");
+	free_env(env);
+	return (EXIT_SUCCESS);
+}
+
+int	main(int argc, const char **argv)
 {
 	t_env	env;
 	char	*line2;
@@ -87,18 +97,12 @@ int         main(int argc, const char **argv)
 		if (ret == EXIT_READ_CLOSED)
 		{
 			free(line2);
-			break;
+			break ;
 		}
 		ret_action = start_action(&env, line2);
 		free(line2);
 		if (ret_action != EXIT_ACTION_FOUND)
 			error(&env, ret_action);
-		
 	}
-	if (env.b.head == NULL && check_order(*(&env.a)) == ORDERED)
-		printf("OK\n");
-	else
-		printf("KO\n");
-	free_env(&env);
-	return (EXIT_SUCCESS);
+	return (print_result(&env));
 }
