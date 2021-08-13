@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 01:19:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 09:45:19 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ int	main(int argc, char const *argv[])
 
 	init_env(&env, argv, argc);
 	free_env(&env);
-	printf("finishd\n");
 	return (0);
 }

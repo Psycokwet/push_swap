@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 01:20:14 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 09:56:56 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,24 @@ static int	parse_value(t_env *env, char const *arg)
 	return (tmp);
 }
 
+
+static int	ft_lstiter_duplicates(t_env *env, t_list *lst, int new_value)
+{
+	if (!lst)
+		return (RETURN_SUCCES);
+	ft_lstiter_duplicates(env, lst->next, new_value);
+	if(new_value == *(int*)(lst->content))
+		return (ERROR_DUPLICATES);
+	return (RETURN_SUCCES);
+}
+
+
 void	init_a(t_env *env, const char **argv, int argc)
 {
 	int	i;
 	int	j;
 	int tmp;
+	int is_duplicate;
 
 	i = 1;
 	env->a.head = NULL;
@@ -51,7 +64,10 @@ void	init_a(t_env *env, const char **argv, int argc)
 		if (argv[i][j] != '\0')
 			error(env, ERROR_NOT_INTEGER);
 		tmp =  parse_value(env, argv[i]);
-		printf("%d result\n", tmp);
+		is_duplicate = ft_lstiter_duplicates(env, env->a.head, tmp);
+		if(is_duplicate != 0){
+			error(env, is_duplicate);
+		}
 		int *value = (int *)malloc(sizeof(int));
 		*value = tmp;
 		ft_lstadd_back(&(env->a.head), ft_lstnew(value));

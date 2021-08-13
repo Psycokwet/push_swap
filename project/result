@@ -3,16 +3,11 @@ Test:0 ARGS: 4 67 3 87 23
 
 Start stack
 4
-23
-87
-3
 67
+3
+87
+23
 End stack
-4 result
-67 result
-3 result
-87 result
-23 result
 
 Test:2 ARGS: 3 2147483647 2 32147483647 -2147483648 b
 
@@ -28,29 +23,14 @@ Test:4 ARGS: 3 2147483647 2 5 5
 
 Start stack
 3
-5
-5
-2
 2147483647
+2
+5
+5
 End stack
-3 result
-2147483647 result
-2 result
-5 result
-5 result
 
 Test:5 ARGS: 3 2147483647 2 5 3
 
-Start stack
-3
-3
-5
-2
-2147483647
-End stack
-3 result
-2147483647 result
-2 result
-5 result
-3 result
+Error
+There is duplicates in the selection
 
