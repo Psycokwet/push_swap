@@ -19,7 +19,6 @@ function testeur ()
 	echo "Start script" > result
 	echo "Start script"
 	unit_test
-	((COUNT=COUNT+1))
 
 	ARG="3  2147483647 2 32147483647 -2147483648 b"
 	unit_test

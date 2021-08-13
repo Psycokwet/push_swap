@@ -9,17 +9,17 @@ Start stack
 23
 End stack
 
-Test:2 ARGS: 3 2147483647 2 32147483647 -2147483648 b
+Test:1 ARGS: 3 2147483647 2 32147483647 -2147483648 b
 
 Error
 One or more inputs is too big
 
-Test:3 ARGS: 3 2147483647 2 b
+Test:2 ARGS: 3 2147483647 2 b
 
 Error
 One or more inputs are not an integer
 
-Test:4 ARGS: 3 2147483647 2 5 5
+Test:3 ARGS: 3 2147483647 2 5 5
 
 Start stack
 3
@@ -29,7 +29,7 @@ Start stack
 5
 End stack
 
-Test:5 ARGS: 3 2147483647 2 5 3
+Test:4 ARGS: 3 2147483647 2 5 3
 
 Error
 There is duplicates in the selection
