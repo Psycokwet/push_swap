@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 11:03:28 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:25:48 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,9 @@ typedef struct s_stack
 
 typedef struct s_env
 {
-	t_stack a;
-	t_stack b;
+	t_stack	a;
+	t_stack	b;
 }	t_env;
-
 
 /*
 ** ************************************************************************** **

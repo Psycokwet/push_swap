@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 11:16:09 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:35:58 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int	parse_value(t_env *env, char const *arg)
 	return (tmp);
 }
 
-
 static int	ft_lstiter_duplicates(t_env *env, t_list *lst, int new_value)
 {
 	int	intermediate_result;
@@ -42,59 +41,45 @@ static int	ft_lstiter_duplicates(t_env *env, t_list *lst, int new_value)
 	if (!lst)
 		return (RETURN_SUCCES);
 	intermediate_result = ft_lstiter_duplicates(env, lst->next, new_value);
-	if(intermediate_result != RETURN_SUCCES || new_value == *(int*)(lst->content))
+	if (intermediate_result != RETURN_SUCCES
+		|| new_value == *(int *)(lst->content))
 		return (ERROR_DUPLICATES);
 	return (RETURN_SUCCES);
 }
 
+static void	parse_one_arg(t_env *env, const char *argv_i)
+{
+	int		j;
+	int		tmp;
+	int		is_duplicate;
+	t_list	*new_node;
+	int		*value;
+
+	j = 0;
+	while (ft_isdigit(argv_i[j]))
+		j++;
+	if (argv_i[j] != '\0')
+		error(env, ERROR_NOT_INTEGER);
+	tmp = parse_value(env, argv_i);
+	is_duplicate = ft_lstiter_duplicates(env, env->a.head, tmp);
+	if (is_duplicate != 0)
+		error(env, is_duplicate);
+	value = (int *)malloc(sizeof(int));
+	*value = tmp;
+	new_node = ft_lstnew(value);
+	ft_lstadd_back(&(env->a.head), new_node);
+}
 
 void	init_a(t_env *env, const char **argv, int argc)
 {
-	int	i;
-	int	j;
-	int tmp;
-	int is_duplicate;
-	t_list *new_node;
+	int		i;
 
 	i = 1;
 	env->a.head = NULL;
 	while (i < argc)
 	{
-		j = 0;
-		while (ft_isdigit(argv[i][j]))
-			j++;
-		if (argv[i][j] != '\0')
-			error(env, ERROR_NOT_INTEGER);
-		tmp =  parse_value(env, argv[i]);
-		is_duplicate = ft_lstiter_duplicates(env, env->a.head, tmp);
-		if(is_duplicate != 0)
-			error(env, is_duplicate);
-		int *value = (int *)malloc(sizeof(int));
-		*value = tmp;
-		new_node = ft_lstnew(value);
-		ft_lstadd_back(&(env->a.head), new_node);
+		parse_one_arg(env, argv[i]);
 		i++;
 	}
 	print_stack(env->a);
-	sa(env);
-	print_stack(env->a);
-	print_stack(env->b);
-	sb(env);
-	print_stack(env->b);
-	ss(env);
-
-	print_stack(env->a);
-	print_stack(env->b);
-	pb(env);
-	print_stack(env->a);
-	print_stack(env->b);
-	pa(env);
-	print_stack(env->a);
-	print_stack(env->b);
-	rr(env);
-	print_stack(env->a);
-	print_stack(env->b);
-	rrr(env);
-	print_stack(env->a);
-	print_stack(env->b);
 }
