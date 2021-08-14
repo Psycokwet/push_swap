@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/14 09:53:04 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 10:10:14 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ void	init_a(t_env *env, const char **argv, int argc)
 	int		i;
 
 	i = 1;
-
 	env->total_item = 0;
 	env->a.head = NULL;
 	while (i < argc)

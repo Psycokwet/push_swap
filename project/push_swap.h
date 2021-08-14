@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/14 09:11:43 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 10:19:33 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_error
 	const char	*full_error;
 }	t_error;
 
-static const t_error	g_errors[MAX_ERRORS] = {
+static const t_error		g_errors[MAX_ERRORS] = {
 	(t_error){ERROR_NOT_INTEGER, "ERROR_NOT_INTEGER",
 		"One or more inputs are not an integer"},
 	(t_error){ERROR_TOO_BIG, "ERROR_TOO_BIG", "One or more inputs is too big"},
@@ -75,9 +75,9 @@ typedef struct s_env
 
 typedef struct s_str
 {
-	char				*str;
-	size_t				size;
-}						t_str;
+	char	*str;
+	size_t	size;
+}			t_str;
 
 /*
 ** ************************************************************************** **
@@ -112,8 +112,8 @@ int		start_action_ps(t_env *env, int index);
 int		start_action_checker(t_env *env, const char *code);
 void	switch_front_two(t_stack *stack);
 
-#define MAX_ACTION_TYPE			12
-#define EXIT_ACTION_FOUND		0
+# define MAX_ACTION_TYPE		12
+# define EXIT_ACTION_FOUND		0
 
 typedef struct s_action_type
 {
@@ -121,29 +121,16 @@ typedef struct s_action_type
 	void	(*action)(t_env	*);
 }	t_action_type;
 
-#define ACT_ID_S_		0
-#define ACT_ID__A		0
-#define ACT_ID__B		1
-#define ACT_ID_SS		2
-#define ACT_ID_P_		3
-#define ACT_ID_R_		5
-#define ACT_ID_RR		7
-#define ACT_ID_RR_		8
-#define ACT_ID_RRR		10
-#define ACT_ID_PRINT	11
-
-// #define ACT_ID_SA		0
-// #define ACT_ID_SB		1
-// #define ACT_ID_SS		2
-// #define ACT_ID_PA		3
-// #define ACT_ID_PB		4
-// #define ACT_ID_RA		5
-// #define ACT_ID_RB		6
-// #define ACT_ID_RR		7
-// #define ACT_ID_RRA		8
-// #define ACT_ID_RRB		9
-// #define ACT_ID_RRR		10
-// #define ACT_ID_PRINT	11
+# define ACT_ID_S_		0
+# define ACT_ID__A		0
+# define ACT_ID__B		1
+# define ACT_ID_SS		2
+# define ACT_ID_P_		3
+# define ACT_ID_R_		5
+# define ACT_ID_RR		7
+# define ACT_ID_RR_		8
+# define ACT_ID_RRR		10
+# define ACT_ID_PRINT	11
 
 static const t_action_type	g_actions_types[MAX_ACTION_TYPE] = {
 	(t_action_type){(t_str){"sa", 2}, &sa},
