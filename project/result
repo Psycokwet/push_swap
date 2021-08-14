@@ -6,10 +6,18 @@ Naked output
 checker output
 KO
 my checker output
-[0][]
 KO
 
-Test:1 ARGS: 3 4 23 67 87
+Test:1 ARGS: 2 1
+
+Naked output
+sa
+checker output
+OK
+my checker output
+OK
+
+Test:2 ARGS: 1 2
 
 Naked output
 
@@ -18,7 +26,16 @@ OK
 my checker output
 OK
 
-Test:2 ARGS: 3 2147483647 2 32147483647 -2147483648 b
+Test:3 ARGS: 3 4 23 67 87
+
+Naked output
+
+checker output
+OK
+my checker output
+OK
+
+Test:4 ARGS: 3 2147483647 2 32147483647 -2147483648 b
 
 Naked output
 
@@ -28,7 +45,7 @@ my checker output
 Error
 One or more inputs is too big
 
-Test:3 ARGS: 3 2147483647 2 b
+Test:5 ARGS: 3 2147483647 2 b
 
 Naked output
 
@@ -38,7 +55,7 @@ my checker output
 Error
 One or more inputs are not an integer
 
-Test:4 ARGS: 3 2147483647 2 5 5
+Test:6 ARGS: 3 2147483647 2 5 5
 
 Naked output
 
@@ -48,7 +65,7 @@ my checker output
 Error
 There is duplicates in the selection
 
-Test:5 ARGS: 3 2147483647 2 5 3
+Test:7 ARGS: 3 2147483647 2 5 3
 
 Naked output
 

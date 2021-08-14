@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_stack.c                                      :+:      :+:    :+:   */
+/*   start_action_checker.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 21:59:04 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 09:03:46 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	print_stack_int(void *content)
+int	start_action_checker(t_env *env, const char *code)
 {
-	ft_putnbr_fd(*(int *)content, 1);
-	ft_putstr_fd("\n", 1);
-}
+	int	i;
 
-void	print_stack(t_stack stack)
-{
-	ft_putstr_fd("Start stack, size : ", 1);
-	ft_putnbr_fd(stack.total_item, 1);
-	ft_putstr_fd("\n", 1);
-	if (stack.head)
-		ft_lstiter_fun_first(stack.head, &print_stack_int);
-	ft_putstr_fd("End stack\n", 1);
+	i = MAX_ACTION_TYPE;
+	while (--i >= 0)
+	{
+		if (ft_strncmp(g_actions_types[i].code.str, code,
+				g_actions_types[i].code.size) == 0)
+		{
+			g_actions_types[i].action(env);
+			return (EXIT_ACTION_FOUND);
+		}
+	}
+	return (ERROR_INST_DONT_EXIST_OR_INCORRECT);
 }

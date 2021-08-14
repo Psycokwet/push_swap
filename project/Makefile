@@ -15,27 +15,31 @@ HEADERS_FILES				=	push_swap.h
 MAIN_FILES					=	main.c
 BONUS_FILES					=	bonus.c
 
-SRC_FILES					=	check_order.c	\
-								error.c			\
-								free_env.c		\
-								init_a.c		\
-								init_env.c		\
-								pa.c			\
-								pb.c			\
-								print_stack.c	\
-								push.c			\
-								quit.c			\
-								ra.c			\
-								rb.c			\
-								reverse_rotate.c\
-								rotate.c		\
-								rr.c			\
-								rra.c			\
-								rrb.c			\
-								rrr.c			\
-								sa.c			\
-								sb.c			\
-								ss.c			\
+SRC_FILES					=	check_order.c			\
+								error.c					\
+								free_env.c				\
+								init_a.c				\
+								init_env.c				\
+								pa.c					\
+								pb.c					\
+								print_both.c			\
+								print_stack.c			\
+								push_swap.c				\
+								push.c					\
+								quit.c					\
+								ra.c					\
+								rb.c					\
+								reverse_rotate.c		\
+								rotate.c				\
+								rr.c					\
+								rra.c					\
+								rrb.c					\
+								rrr.c					\
+								sa.c					\
+								sb.c					\
+								ss.c					\
+								start_action_checker.c	\
+								start_action_ps.c		\
 								switch_front_two.c
 
 OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names

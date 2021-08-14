@@ -30,6 +30,12 @@ function testeur ()
 	echo "Start script"
 	unit_test
 
+	ARG="2 1"
+	unit_test
+
+	ARG="1 2"
+	unit_test
+
 	ARG="3 4 23 67 87"
 	unit_test
 
