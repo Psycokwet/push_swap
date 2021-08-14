@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/14 09:13:43 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 10:08:06 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,25 @@ void	sort_three(t_env *env, t_stack stack, int base_id)
 {
 	int	nb[3] = { *(int*)stack.head->content, *(int*)stack.head->next->content, *(int*)stack.head->next->next->content};
 
-	if (nb[1] < nb[2] && nb[2] < nb[3])
+	if (nb[0] < nb[1] && nb[1] < nb[2])
 		return ;
-	if (nb[1] > nb[2] && nb[2] < nb[3] && nb[1] < nb[3]) // 2>1<3
+	if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] < nb[2]) // 2>1<3
 		start_action_ps(env, ACT_ID_S_ + base_id);
-	else if (nb[1] > nb[2] && nb[2] > nb[3] && nb[1] > nb[3]) //3>2>1
+	else if (nb[0] > nb[1] && nb[1] > nb[2] && nb[0] > nb[2]) //3>2>1
 	{
 		start_action_ps(env, ACT_ID_S_ + base_id);
 		start_action_ps(env, ACT_ID_RR_ + base_id);
 	}
-	else if (nb[1] < nb[2] && nb[2] > nb[3] && nb[1] < nb[3]) // 1<3>2
+	else if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] > nb[2]) //3>1<2
 		start_action_ps(env, ACT_ID_R_ + base_id);
-	else if (nb[1] > nb[2] && nb[2] < nb[3] && nb[1] > nb[3]) //3>1<2
+	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] < nb[2]) // 1<3>2
 	{
 		start_action_ps(env, ACT_ID_S_ + base_id);
 		start_action_ps(env, ACT_ID_R_ + base_id);
 	}
-	else if (nb[1] < nb[2] && nb[2] > nb[3] && nb[1] > nb[3]) //2<3>1
+	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] > nb[2]) //2<3>1
 		start_action_ps(env, ACT_ID_RR_ + base_id);
+
 }
 
 void	sort_four(t_env *env)

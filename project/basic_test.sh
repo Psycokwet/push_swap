@@ -36,6 +36,24 @@ function testeur ()
 	ARG="1 2"
 	unit_test
 
+	ARG="1 2 3"
+	unit_test
+
+	ARG="1 3 2"
+	unit_test
+
+	ARG="3 1 2"
+	unit_test
+
+	ARG="3 2 1"
+	unit_test
+
+	ARG="2 3 1"
+	unit_test
+
+	ARG="2 1 3"
+	unit_test
+
 	ARG="3 4 23 67 87"
 	unit_test
 
