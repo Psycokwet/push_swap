@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/14 10:19:33 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 13:53:57 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_env
 	t_stack	a;
 	t_stack	b;
 	int		total_item;
+	t_stack	action_stack;
 }	t_env;
 
 typedef struct s_str
@@ -108,9 +109,15 @@ void	rrr(t_env *env);
 void	sa(t_env *env);
 void	sb(t_env *env);
 void	ss(t_env *env);
-int		start_action_ps(t_env *env, int index);
+void	start_action_ps(t_env *env, int index);
 int		start_action_checker(t_env *env, const char *code);
 void	switch_front_two(t_stack *stack);
+
+void	optimise_action_stack(t_env *env);
+void	execute_action_stack(t_env *env);
+void	add_back_action_stack(t_env *env, int full_id);
+void	clear_action_stack(t_env *env);
+void	fake_free(void* content);
 
 # define MAX_ACTION_TYPE		12
 # define EXIT_ACTION_FOUND		0

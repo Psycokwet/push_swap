@@ -15,7 +15,8 @@ HEADERS_FILES				=	push_swap.h
 MAIN_FILES					=	main.c
 BONUS_FILES					=	bonus.c
 
-SRC_FILES					=	check_order.c			\
+SRC_FILES					=	action_stack.c			\
+								check_order.c			\
 								error.c					\
 								free_env.c				\
 								init_a.c				\

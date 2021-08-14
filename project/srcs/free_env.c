@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 10:56:06 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 13:53:02 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,6 @@ void	free_env(t_env *env)
 	env->a.head = NULL;
 	ft_lstclear(&env->b.head, &free);
 	env->b.head = NULL;
+	clear_action_stack(env);
+	env->action_stack.head = NULL;
 }
