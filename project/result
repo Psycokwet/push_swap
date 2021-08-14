@@ -1,23 +1,14 @@
 Start script
-Test:0 ARGS: 4 67 3 87 23
+---Push_swap identité---
+
+Test:0 ARGS: 
 
 Naked output
 
 checker output
-KO
 my checker output
-KO
 
-Test:1 ARGS: 2 1
-
-Naked output
-sa
-checker output
-OK
-my checker output
-OK
-
-Test:2 ARGS: 1 2
+Test:1 ARGS: 42
 
 Naked output
 
@@ -26,7 +17,7 @@ OK
 my checker output
 OK
 
-Test:3 ARGS: 1 2 3
+Test:2 ARGS: 0 1 2 3
 
 Naked output
 
@@ -35,26 +26,18 @@ OK
 my checker output
 OK
 
-Test:4 ARGS: 1 3 2
+Test:3 ARGS: 0 1 2 3 4 5 6 7 8 9
 
 Naked output
-sa
-ra
+
 checker output
 OK
 my checker output
 OK
 
-Test:5 ARGS: 3 1 2
+---Push_swap tests simples---
 
-Naked output
-ra
-checker output
-OK
-my checker output
-OK
-
-Test:6 ARGS: 3 2 1
+Test:4 ARGS: 2 1 0
 
 Naked output
 sa
@@ -64,16 +47,64 @@ OK
 my checker output
 OK
 
-Test:7 ARGS: 2 3 1
+---Push_swap d'autres tests tout aussi simples---
+
+Test:5 ARGS: 1 5 2 4 3
 
 Naked output
-rra
+
+checker output
+KO
+my checker output
+KO
+
+Test:6 ARGS: 5 6 7 8 9
+
+Naked output
+
 checker output
 OK
 my checker output
 OK
 
-Test:8 ARGS: 2 1 3
+---Push_swap tests intermédiairs---
+
+Test:7 ARGS: 100 PARAMS AU CHOIX
+
+Naked output
+THERE
+checker output
+Error
+my checker output
+Error
+One or more inputs are not an integer
+THERE
+
+---Push_swap tests avancé---
+
+Test:8 ARGS: 500 PARAMS AU CHOIX
+
+Naked output
+THERE
+checker output
+Error
+my checker output
+Error
+One or more inputs are not an integer
+THERE
+
+---Push_swap tests PERSOS---
+
+Test:9 ARGS: 4 67 3 87 23
+
+Naked output
+
+checker output
+KO
+my checker output
+KO
+
+Test:10 ARGS: 2 1
 
 Naked output
 sa
@@ -82,7 +113,7 @@ OK
 my checker output
 OK
 
-Test:9 ARGS: 3 4 23 67 87
+Test:11 ARGS: 1 2
 
 Naked output
 
@@ -91,7 +122,72 @@ OK
 my checker output
 OK
 
-Test:10 ARGS: 3 2147483647 2 32147483647 -2147483648 b
+Test:12 ARGS: 1 2 3
+
+Naked output
+
+checker output
+OK
+my checker output
+OK
+
+Test:13 ARGS: 1 3 2
+
+Naked output
+sa
+ra
+checker output
+OK
+my checker output
+OK
+
+Test:14 ARGS: 3 1 2
+
+Naked output
+ra
+checker output
+OK
+my checker output
+OK
+
+Test:15 ARGS: 3 2 1
+
+Naked output
+sa
+rra
+checker output
+OK
+my checker output
+OK
+
+Test:16 ARGS: 2 3 1
+
+Naked output
+rra
+checker output
+OK
+my checker output
+OK
+
+Test:17 ARGS: 2 1 3
+
+Naked output
+sa
+checker output
+OK
+my checker output
+OK
+
+Test:18 ARGS: -1 5 2 4 3
+
+Naked output
+
+checker output
+KO
+my checker output
+KO
+
+Test:19 ARGS: --1 5 2 4 3
 
 Naked output
 
@@ -101,7 +197,16 @@ my checker output
 Error
 One or more inputs is too big
 
-Test:11 ARGS: 3 2147483647 2 b
+Test:20 ARGS: 3 4 23 67 87
+
+Naked output
+
+checker output
+OK
+my checker output
+OK
+
+Test:21 ARGS: 3 2147483647 2 32147483647 -2147483648 b
 
 Naked output
 
@@ -109,9 +214,20 @@ checker output
 Error
 my checker output
 Error
-One or more inputs are not an integer
+One or more inputs is too big
 
-Test:12 ARGS: 3 2147483647 2 5 5
+Test:22 ARGS: 3 2147483647 2 b
+
+Naked output
+THERE
+checker output
+Error
+my checker output
+Error
+One or more inputs are not an integer
+THERE
+
+Test:23 ARGS: 3 2147483647 2 5 5
 
 Naked output
 
@@ -121,7 +237,7 @@ my checker output
 Error
 There is duplicates in the selection
 
-Test:13 ARGS: 3 2147483647 2 5 3
+Test:24 ARGS: 3 2147483647 2 5 3
 
 Naked output
 

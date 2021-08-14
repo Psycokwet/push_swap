@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/14 10:10:14 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 10:43:43 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	parse_one_arg(t_env *env, const char *argv_i, char **splitted)
 	j = 0;
 	while (ft_isdigit(argv_i[j]))
 		j++;
-	if (argv_i[j] != '\0')
+	if (argv_i[j] != '\0' && argv_i[j] != '-')
 		return (ERROR_NOT_INTEGER);
 	tmp = parse_value(env, argv_i, splitted);
 	is_duplicate = ft_lstiter_duplicates(env, env->a.head, tmp);

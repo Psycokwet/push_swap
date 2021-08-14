@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ARG="4 67 3 87 23"
+ARG=""
 COUNT=0
 function unit_test ()
 {
@@ -27,7 +27,53 @@ function unit_test ()
 function testeur ()
 {
 	echo "Start script" > result
-	echo "Start script"
+
+	echo "---Push_swap identité---" >> result
+	echo "" >> result
+	ARG=""
+	unit_test
+	
+	ARG="42"
+	unit_test
+
+	ARG="0 1 2 3"
+	unit_test
+
+	ARG="0 1 2 3 4 5 6 7 8 9"
+	unit_test
+	
+	echo "---Push_swap tests simples---" >> result
+	echo "" >> result
+
+	ARG="2 1 0"
+	unit_test
+	
+	echo "---Push_swap d'autres tests tout aussi simples---" >> result
+	echo "" >> result
+
+	ARG="1 5 2 4 3"
+	unit_test
+
+	echo "Enter 5 parameters of your choice"
+	ARG=$(cat)
+	unit_test
+
+	echo "---Push_swap tests intermédiairs---" >> result
+	echo "" >> result
+
+	ARG="100 PARAMS AU CHOIX"
+	unit_test
+
+	echo "---Push_swap tests avancé---" >> result
+	echo "" >> result
+
+	ARG="500 PARAMS AU CHOIX"
+	unit_test
+
+	echo "---Push_swap tests PERSOS---" >> result
+	echo "" >> result
+
+	ARG="4 67 3 87 23"
 	unit_test
 
 	ARG="2 1"
@@ -52,6 +98,12 @@ function testeur ()
 	unit_test
 
 	ARG="2 1 3"
+	unit_test
+
+	ARG="-1 5 2 4 3"
+	unit_test
+
+	ARG="--1 5 2 4 3"
 	unit_test
 
 	ARG="3 4 23 67 87"
