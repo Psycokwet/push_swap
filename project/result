@@ -52,59 +52,58 @@ OK
 Test:5 ARGS: 1 5 2 4 3
 
 Naked output
-
+pb
+pb
+sa
+ra
+pa
+pa
 checker output
 KO
 my checker output
 KO
-
-Test:6 ARGS: 5 6 7 8 9
-
-Naked output
-
-checker output
-OK
-my checker output
-OK
 
 ---Push_swap tests intermédiairs---
 
-Test:7 ARGS: 100 PARAMS AU CHOIX
+Test:6 ARGS: 100 PARAMS AU CHOIX
 
 Naked output
-THERE
+
 checker output
 Error
 my checker output
 Error
 One or more inputs are not an integer
-THERE
 
 ---Push_swap tests avancé---
 
-Test:8 ARGS: 500 PARAMS AU CHOIX
+Test:7 ARGS: 500 PARAMS AU CHOIX
 
 Naked output
-THERE
+
 checker output
 Error
 my checker output
 Error
 One or more inputs are not an integer
-THERE
 
 ---Push_swap tests PERSOS---
 
-Test:9 ARGS: 4 67 3 87 23
+Test:8 ARGS: 4 67 3 87 23
 
 Naked output
-
+pb
+pb
+sa
+ra
+pa
+pa
 checker output
 KO
 my checker output
 KO
 
-Test:10 ARGS: 2 1
+Test:9 ARGS: 2 1
 
 Naked output
 sa
@@ -113,7 +112,7 @@ OK
 my checker output
 OK
 
-Test:11 ARGS: 1 2
+Test:10 ARGS: 1 2
 
 Naked output
 
@@ -122,7 +121,7 @@ OK
 my checker output
 OK
 
-Test:12 ARGS: 1 2 3
+Test:11 ARGS: 1 2 3
 
 Naked output
 
@@ -131,7 +130,7 @@ OK
 my checker output
 OK
 
-Test:13 ARGS: 1 3 2
+Test:12 ARGS: 1 3 2
 
 Naked output
 sa
@@ -141,7 +140,7 @@ OK
 my checker output
 OK
 
-Test:14 ARGS: 3 1 2
+Test:13 ARGS: 3 1 2
 
 Naked output
 ra
@@ -150,7 +149,7 @@ OK
 my checker output
 OK
 
-Test:15 ARGS: 3 2 1
+Test:14 ARGS: 3 2 1
 
 Naked output
 sa
@@ -160,7 +159,7 @@ OK
 my checker output
 OK
 
-Test:16 ARGS: 2 3 1
+Test:15 ARGS: 2 3 1
 
 Naked output
 rra
@@ -169,7 +168,7 @@ OK
 my checker output
 OK
 
-Test:17 ARGS: 2 1 3
+Test:16 ARGS: 2 1 3
 
 Naked output
 sa
@@ -178,16 +177,21 @@ OK
 my checker output
 OK
 
-Test:18 ARGS: -1 5 2 4 3
+Test:17 ARGS: -1 5 2 4 3
 
 Naked output
-
+pb
+pb
+sa
+ra
+pa
+pa
 checker output
 KO
 my checker output
 KO
 
-Test:19 ARGS: --1 5 2 4 3
+Test:18 ARGS: --1 5 2 4 3
 
 Naked output
 
@@ -197,7 +201,7 @@ my checker output
 Error
 One or more inputs is too big
 
-Test:20 ARGS: 3 4 23 67 87
+Test:19 ARGS: 3 4 23 67 87
 
 Naked output
 
@@ -206,7 +210,7 @@ OK
 my checker output
 OK
 
-Test:21 ARGS: 3 2147483647 2 32147483647 -2147483648 b
+Test:20 ARGS: 3 2147483647 2 32147483647 -2147483648 b
 
 Naked output
 
@@ -216,18 +220,17 @@ my checker output
 Error
 One or more inputs is too big
 
-Test:22 ARGS: 3 2147483647 2 b
+Test:21 ARGS: 3 2147483647 2 b
 
 Naked output
-THERE
+
 checker output
 Error
 my checker output
 Error
 One or more inputs are not an integer
-THERE
 
-Test:23 ARGS: 3 2147483647 2 5 5
+Test:22 ARGS: 3 2147483647 2 5 5
 
 Naked output
 
@@ -237,7 +240,7 @@ my checker output
 Error
 There is duplicates in the selection
 
-Test:24 ARGS: 3 2147483647 2 5 3
+Test:23 ARGS: 3 2147483647 2 5 3
 
 Naked output
 

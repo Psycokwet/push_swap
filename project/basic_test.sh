@@ -54,9 +54,9 @@ function testeur ()
 	ARG="1 5 2 4 3"
 	unit_test
 
-	echo "Enter 5 parameters of your choice"
-	ARG=$(cat)
-	unit_test
+	# echo "Enter 5 parameters of your choice"
+	# ARG=$(cat)
+	# unit_test
 
 	echo "---Push_swap tests intermédiairs---" >> result
 	echo "" >> result

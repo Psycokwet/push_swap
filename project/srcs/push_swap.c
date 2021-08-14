@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/14 10:24:05 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 11:31:03 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,12 @@ void	sort_four(t_env *env)
 }
 void	sort_five(t_env *env)
 {
-
+	start_action_ps(env, ACT_ID_P_ + ACT_ID__B);
+	start_action_ps(env, ACT_ID_P_ + ACT_ID__B);
+	sort_three(env, env->a, ACT_ID__A);
+	// sort_two(env, env->b, ACT_ID__B); incomplete
+	start_action_ps(env, ACT_ID_P_ + ACT_ID__A);
+	start_action_ps(env, ACT_ID_P_ + ACT_ID__A);
 }
 
 void	sort_100(t_env *env)
@@ -51,13 +56,26 @@ void	sort_100(t_env *env)
 
 }
 
+
+void	sort_two(t_env *env, t_stack stack, int base_id)
+{
+	if (stack.total_item == 2 && *(int *)stack.head->content > *(int *)stack.head->next->content)
+		start_action_ps(env, ACT_ID_S_ + base_id);
+}
+
+void	sort_two_reverse(t_env *env, t_stack stack, int base_id)
+{
+	if (stack.total_item == 2 && *(int *)stack.head->content < *(int *)stack.head->next->content)
+		start_action_ps(env, ACT_ID_S_ + base_id);
+}
+
 void	push_swap(t_env *env)
 {
 	if (env->total_item < 2)
 		return;
-	if (env->total_item == 2 && *(int *)env->a.head->content > *(int *)env->a.head->next->content)
+	if (env->total_item == 2)
 	{
-		start_action_ps(env, ACT_ID_S_ + ACT_ID__A);
+		sort_two(env, env->a, ACT_ID__A);
 		return ;
 	}
 	if (env->total_item == 3)
