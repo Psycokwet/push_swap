@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/14 15:18:11 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 11:20:11 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	print_stack(t_stack stack)
 	ft_putnbr_fd(stack.total_item, 1);
 	ft_putstr_fd("\n", 1);
 	if (stack.head)
-		ft_lstiter_fun_first(stack.head, &print_stack_int);
+		ft_lstdbiter_fun_first(stack.head, &print_stack_int);
 	ft_putstr_fd("        End stack\n", 1);
 }

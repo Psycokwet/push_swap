@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/22 19:53:05 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 11:16:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ static const t_error		g_errors[MAX_ERRORS] = {
 
 typedef struct s_stack
 {
-	t_list	*head;
-	int		total_item;
+	t_list_double	*head;
+	t_list_double	*tail;
+	int				total_item;
 }	t_stack;
 
 typedef struct s_env

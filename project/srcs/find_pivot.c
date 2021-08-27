@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/14 23:35:26 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 11:24:34 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	find_pivot_int(t_list *lst, int *arr, int index)
+static void	find_pivot_int(t_list_double *lst, int *arr, int index)
 {
 	if (!lst)
 		return ;

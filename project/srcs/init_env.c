@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/22 19:53:11 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 11:19:58 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void	init_env(t_env *env, const char **argv, int argc)
 	env->action_stack.head = NULL;
 	env->action_stack.total_item = 0;
 	init_a(env, argv, argc);
-	ft_lstcpy(env->a.head, &env->c_a.head, &cpy_content_stack);
+	ft_lstdbcpy(env->a.head, &env->c_a.head, &cpy_content_stack);
 	env->c_a.total_item = env->a.total_item;
 }

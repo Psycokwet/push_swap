@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/22 20:08:00 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 11:56:53 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,7 +361,7 @@ void	reset_a_and_b(t_env *env)
 {
 	while(env->b.total_item > 0)
 		pa(env);
-	ft_lstreset(env->c_a.head, env->a.head, &copy_content);
+	ft_lstdbreset(env->c_a.head, env->a.head, &copy_content);
 }
 
 void	start_brute_force(t_env *env)
@@ -427,7 +427,7 @@ void	algo(t_env *env)
 {
 	env->position_array = (int *)malloc(sizeof(int) * env->total_item);
 
-	t_list	*item;
+	t_list_double	*item;
 	int		i;
 
 	i = 0;

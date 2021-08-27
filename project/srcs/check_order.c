@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 15:54:20 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 11:24:46 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	check_order_int(t_list *lst, int prev)
+static int	check_order_int(t_list_double *lst, int prev)
 {
 	if (!lst)
 		return (ORDERED);

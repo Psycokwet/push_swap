@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/22 17:24:55 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 11:27:30 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	fake_free(void* content)
 
 void	clear_action_stack(t_env *env)
 {
-	ft_lstclear(&env->action_stack.head, &free);
+	ft_lstdbclear(&env->action_stack.head, &free);
 }
 
 // void	add_back_action_stack(t_env *env, int full_id)
@@ -39,7 +39,7 @@ void	add_back_action_stack(t_env *env, int full_id)
 	if(!content)
 		error(env, ERROR_MALLOC);
 	*content = full_id;
-	ft_lstadd_back(&env->action_stack.head, ft_lstnew(content));
+	ft_lstdbadd_back(&env->action_stack.head, ft_lstdbnew(content));
 	env->action_stack.total_item++;
 }
 
@@ -59,7 +59,7 @@ void	print_action_stack(t_env* env)
 	ft_putnbr_fd(env->action_stack.total_item, 1);
 	ft_putstr_fd("\n", 1);
 	if (env->action_stack.head)
-		ft_lstiter_fun_first(env->action_stack.head, &print_action_stack_int);
+		ft_lstdbiter_fun_first(env->action_stack.head, &print_action_stack_int);
 	ft_putstr_fd("        End Action stack\n", 1);
 
 }
@@ -70,7 +70,7 @@ void	print_action_stack(t_env* env)
 #define ADD_NEW_ACTION 3
 #define NEXT_IS_UPGRADED 4
 #define STOP_UPGRADE 5
-int	upgrade_to_next_possibility_int(t_env *env, t_list *action, int state)
+int	upgrade_to_next_possibility_int(t_env *env, t_list_double *action, int state)
 {
 	int ret;
 	if (*(int*)action->content == ACT_ID_RRR && (state == STARTED || state == MAXED_OUT_TILL_NOW ))
@@ -129,7 +129,7 @@ void	optimise_action_stack(t_env *env)
 	(void)env;
 }
 
-void	execute_action_stack_int(t_env *env, t_list *action, int (*fun)(t_env*, int))
+void	execute_action_stack_int(t_env *env, t_list_double *action, int (*fun)(t_env*, int))
 {
 	if (!action || !fun)
 		return ;
