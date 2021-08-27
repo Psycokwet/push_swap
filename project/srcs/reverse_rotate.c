@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 11:21:28 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 15:47:05 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,12 @@ int	reverse_rotate(t_stack *stack)
 	before_last = ft_lstdb_before_last(stack->head);
 	if (!before_last)
 		return (NO_ACTION_DONE);
+	if (stack->total_item == 2)
+		return (switch_front_two(stack));
 	last_then_first = before_last->next;
 	before_last->next = NULL;
 	ft_lstdbadd_front(&stack->head, last_then_first);
+	stack->tail = before_last;
+	last_then_first->prev = NULL;
 	return (ACTION_DONE);
 }

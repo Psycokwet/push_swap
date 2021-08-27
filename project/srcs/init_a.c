@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 11:19:42 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 12:32:47 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ static int	parse_one_arg(t_env *env, const char *argv_i, char **splitted)
 	new_node = ft_lstdbnew(value);
 	env->total_item++;
 	ft_lstdbadd_back(&(env->a.head), new_node);
+	if (env->a.tail)
+	{
+		new_node->prev = env->a.tail;
+	}
+	env->a.tail = new_node;
 	return (EXIT_SUCCESS);
 }
 

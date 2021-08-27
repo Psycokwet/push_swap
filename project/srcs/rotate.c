@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 11:21:57 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 15:43:54 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,16 @@ int	rotate(t_stack *stack)
 
 	if (!stack->head)
 		return (NO_ACTION_DONE);
-	first_then_last = stack->head;
-	if (!first_then_last->next)
+	if (stack->total_item <= 1)
 		return (NO_ACTION_DONE);
+	if (stack->total_item == 2)
+		return (switch_front_two(stack));
+	first_then_last = stack->head;
 	stack->head = first_then_last->next;
 	first_then_last->next = NULL;
 	ft_lstdbadd_back(&stack->head, first_then_last);
+	first_then_last->prev = stack->tail;
+	stack->tail = first_then_last;
+	stack->head->prev = NULL;
 	return (ACTION_DONE);
 }

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 11:16:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 12:26:27 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,9 @@ void	init_a(t_env *env, const char **argv, int argc);
 void	init_env(t_env *env, const char **argv, int argc);
 int		pa(t_env *env);
 int		pb(t_env *env);
+int		print_both_from_tail(t_env *env);
 int		print_both(t_env *env);
+void	print_stack_from_tail(t_stack stack);
 void	print_stack(t_stack stack);
 void	push_swap(t_env *env);
 int		push(t_stack *giver, t_stack *taker);
@@ -141,7 +143,7 @@ void	fake_free(void* content);
 void	print_action_stack(t_env* env);
 void	upgrade_to_next_possibility(t_env *env);
 
-# define MAX_ACTION_TYPE		12
+# define MAX_ACTION_TYPE		13
 # define EXIT_ACTION_FOUND		0
 
 typedef struct s_action_type
@@ -160,6 +162,7 @@ typedef struct s_action_type
 # define ACT_ID_RR_		8
 # define ACT_ID_RRR		10
 # define ACT_ID_PRINT	11
+# define ACT_ID_PRINT_T	12
 
 static const t_action_type	g_actions_types[MAX_ACTION_TYPE] = {
 	(t_action_type){(t_str){"sa", 2}, &sa},
@@ -174,6 +177,7 @@ static const t_action_type	g_actions_types[MAX_ACTION_TYPE] = {
 	(t_action_type){(t_str){"rrb", 3}, &rrb},
 	(t_action_type){(t_str){"rrr", 3}, &rrr},
 	(t_action_type){(t_str){"print", 5}, &print_both},
+	(t_action_type){(t_str){"print_t", 7}, &print_both_from_tail},
 };
 
 // write

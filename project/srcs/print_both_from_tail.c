@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   switch_front_two.c                                 :+:      :+:    :+:   */
+/*   print_both_from_tail.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 15:45:11 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 12:25:14 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	switch_front_two(t_stack *stack)
+int	print_both_from_tail(t_env *env)
 {
-	t_list_double	*first_then_second;
-	t_list_double	*second_then_first;
-
-	first_then_second = stack->head;
-	if (first_then_second == NULL)
-		return (NO_ACTION_DONE);
-	second_then_first = stack->head->next;
-	if (second_then_first == NULL)
-		return (NO_ACTION_DONE);
-	stack->head = second_then_first->next;
-	ft_lstdbadd_front(&(stack->head), first_then_second);
-	ft_lstdbadd_front(&(stack->head), second_then_first);
-	second_then_first->prev = NULL;
-	first_then_second->prev = second_then_first;
-	if (first_then_second->next != NULL)
-		return (NO_ACTION_DONE);
+	print_stack_from_tail(env->a);
+	print_stack_from_tail(env->b);
 	return (ACTION_DONE);
 }

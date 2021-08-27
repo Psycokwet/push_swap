@@ -25,7 +25,9 @@ SRC_FILES					=	action_stack.c			\
 								init_env.c				\
 								pa.c					\
 								pb.c					\
+								print_both_from_tail.c	\
 								print_both.c			\
+								print_stack_from_tail.c	\
 								print_stack.c			\
 								push_swap.c				\
 								push.c					\

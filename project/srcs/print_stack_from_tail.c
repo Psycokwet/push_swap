@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   print_stack_from_tail.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 15:04:41 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 12:28:06 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	push(t_stack *giver, t_stack *taker)
+static void	print_stack_int(void *content)
 {
-	t_list_double	*giver_node;
+	ft_putstr_fd("        ", 1);
+	ft_putnbr_fd(*(int *)content, 1);
+	ft_putstr_fd("\n", 1);
+}
 
-	if (giver->head == NULL)
-		return (NO_ACTION_DONE);
-
-	if (taker->total_item == 1)
-		taker->tail = taker->head;
-	giver_node = giver->head;
-	giver->head = giver_node->next;
-	ft_lstdbadd_front(&(taker->head), giver_node);
-	giver->total_item--;
-	if (giver->total_item <= 1)
-		giver->tail = giver->head;
-	taker->total_item++;
-	if (taker->total_item == 1)
-		taker->tail = taker->head;
-	if (giver->total_item >= 1)
-		giver->head->prev = NULL;
-	return (ACTION_DONE);
+void	print_stack_from_tail(t_stack stack)
+{
+	ft_putstr_fd("        Start stack, size : ", 1);
+	ft_putnbr_fd(stack.total_item, 1);
+	ft_putstr_fd("\n", 1);
+	if (stack.tail)
+		ft_lstdbiter_fun_first_from_back(stack.tail, &print_stack_int);
+	ft_putstr_fd("        End stack\n", 1);
 }

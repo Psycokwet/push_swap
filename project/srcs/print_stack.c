@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 11:20:11 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 12:27:09 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	print_stack_int(void *content)
+static void	print_stack_int(void *content)
 {
 	ft_putstr_fd("        ", 1);
 	ft_putnbr_fd(*(int *)content, 1);
