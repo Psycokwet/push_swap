@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 10:57:06 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 23:01:23 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rb(t_env *env)
+int	rb(t_env *env)
 {
-	rotate(&env->b);
+	return (rotate(&env->b));
 }

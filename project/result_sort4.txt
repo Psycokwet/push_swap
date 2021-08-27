@@ -1,0 +1,984 @@
+OK
+OK
+0 1 2 3
+OK
+OK
+pb
+sa
+ra
+pa
+0 1 3 2
+OK
+OK
+pb
+sa
+pa
+0 2 1 3
+OK
+OK
+rra
+sa
+0 2 3 1
+OK
+OK
+sa
+ra
+0 3 1 2
+OK
+OK
+pb
+sa
+rra
+pa
+0 3 2 1
+OK
+OK
+sa
+1 0 2 3
+OK
+OK
+sa
+pb
+sa
+ra
+pa
+1 0 3 2
+OK
+OK
+pb
+sa
+pa
+sa
+1 2 0 3
+OK
+OK
+rra
+1 2 3 0
+OK
+OK
+sa
+ra
+sa
+1 3 0 2
+OK
+OK
+sa
+rra
+sa
+ra
+1 3 2 0
+OK
+OK
+sa
+pb
+sa
+pa
+2 0 1 3
+OK
+OK
+sa
+rra
+sa
+2 0 3 1
+OK
+OK
+sa
+pb
+sa
+pa
+sa
+2 1 0 3
+OK
+OK
+sa
+rra
+2 1 3 0
+OK
+OK
+ra
+ra
+sa
+2 3 1 0
+OK
+OK
+ra
+ra
+2 3 0 1
+OK
+OK
+ra
+3 0 1 2
+OK
+OK
+ra
+pb
+sa
+pa
+3 0 2 1
+OK
+OK
+ra
+sa
+3 1 0 2
+OK
+OK
+rra
+sa
+ra
+3 1 2 0
+OK
+OK
+sa
+ra
+ra
+3 2 0 1
+OK
+OK
+sa
+ra
+ra
+sa
+3 2 1 0
+OK
+OK
+ra
+5 0 1 2 3
+OK
+OK
+rra
+rra
+sa
+rra
+rra
+5 0 1 3 2
+OK
+OK
+ra
+pb
+sa
+pa
+5 0 2 1 3
+OK
+OK
+rra
+sa
+ra
+sa
+5 0 2 3 1
+OK
+OK
+pb
+sa
+ra
+pa
+ra
+5 0 3 1 2
+KO
+KO
+5 0 3 2 1
+OK
+OK
+ra
+sa
+5 1 0 2 3
+OK
+OK
+ra
+pb
+pb
+ss
+pa
+pa
+5 1 0 3 2
+OK
+OK
+ra
+pb
+sa
+pa
+sa
+5 1 2 0 3
+OK
+OK
+rra
+sa
+ra
+5 1 2 3 0
+OK
+OK
+sa
+pb
+sa
+rra
+pa
+rra
+5 1 3 0 2
+KO
+KO
+5 1 3 2 0
+OK
+OK
+sa
+rra
+sa
+rra
+rra
+5 2 0 1 3
+OK
+OK
+pb
+sa
+rra
+sa
+pa
+ra
+5 2 0 3 1
+OK
+OK
+sa
+rra
+sa
+rra
+rra
+sa
+5 2 1 0 3
+OK
+OK
+pb
+sa
+rra
+pa
+ra
+5 2 1 3 0
+OK
+OK
+sa
+ra
+sa
+ra
+ra
+sa
+5 2 3 1 0
+OK
+OK
+sa
+ra
+sa
+ra
+ra
+5 2 3 0 1
+OK
+OK
+sa
+ra
+ra
+5 3 0 1 2
+OK
+OK
+sa
+rra
+rra
+sa
+rra
+5 3 0 2 1
+OK
+OK
+sa
+ra
+ra
+sa
+5 3 1 0 2
+OK
+OK
+sa
+rra
+sa
+ra
+sa
+ra
+5 3 1 2 0
+OK
+OK
+pb
+sa
+ra
+ra
+pa
+ra
+5 3 2 0 1
+KO
+KO
+5 3 2 1 0
+OK
+OK
+sa
+ra
+0 5 1 2 3
+OK
+OK
+sa
+rra
+rra
+sa
+rra
+rra
+0 5 1 3 2
+OK
+OK
+pb
+ra
+sa
+pa
+0 5 2 1 3
+OK
+OK
+sa
+rra
+sa
+ra
+sa
+0 5 2 3 1
+OK
+OK
+pb
+sa
+ra
+ra
+pa
+0 5 3 1 2
+OK
+OK
+pb
+sa
+ra
+ra
+sa
+pa
+0 5 3 2 1
+OK
+OK
+sa
+ra
+sa
+1 5 0 2 3
+OK
+OK
+pb
+ra
+pb
+ss
+pa
+pa
+1 5 0 3 2
+OK
+OK
+pb
+ra
+sa
+pa
+sa
+1 5 2 0 3
+OK
+OK
+sa
+rra
+sa
+ra
+1 5 2 3 0
+OK
+OK
+pb
+sa
+rra
+pa
+rra
+1 5 3 0 2
+KO
+KO
+1 5 3 2 0
+OK
+OK
+rra
+sa
+rra
+rra
+2 5 0 1 3
+OK
+OK
+ra
+pb
+sa
+ra
+pa
+ra
+2 5 0 3 1
+OK
+OK
+rra
+sa
+rra
+rra
+sa
+2 5 1 0 3
+OK
+OK
+sa
+pb
+sa
+rra
+pa
+ra
+2 5 1 3 0
+OK
+OK
+ra
+sa
+ra
+ra
+sa
+2 5 3 1 0
+OK
+OK
+ra
+sa
+ra
+ra
+2 5 3 0 1
+OK
+OK
+ra
+ra
+3 5 0 1 2
+OK
+OK
+rra
+rra
+sa
+rra
+3 5 0 2 1
+OK
+OK
+ra
+ra
+sa
+3 5 1 0 2
+OK
+OK
+rra
+sa
+ra
+sa
+ra
+3 5 1 2 0
+OK
+OK
+pb
+sa
+pa
+sa
+rra
+rra
+3 5 2 0 1
+OK
+OK
+rra
+pb
+ra
+ra
+sa
+pa
+3 5 2 1 0
+OK
+OK
+pb
+sa
+ra
+pa
+0 1 5 2 3
+OK
+OK
+pb
+pb
+sa
+rra
+pa
+pa
+0 1 5 3 2
+OK
+OK
+pb
+sa
+ra
+sa
+pa
+0 2 5 1 3
+OK
+OK
+pb
+sa
+rra
+sa
+ra
+pa
+0 2 5 3 1
+OK
+OK
+sa
+ra
+sa
+ra
+0 3 5 1 2
+OK
+OK
+pb
+ra
+ra
+sa
+pa
+0 3 5 2 1
+OK
+OK
+sa
+pb
+sa
+ra
+pa
+1 0 5 2 3
+OK
+OK
+pb
+pb
+sa
+rrr
+pa
+pa
+1 0 5 3 2
+OK
+OK
+pb
+rra
+sa
+pa
+rra
+1 2 5 0 3
+OK
+OK
+ra
+ra
+sa
+ra
+ra
+1 2 5 3 0
+OK
+OK
+rra
+sa
+rra
+1 3 5 0 2
+OK
+OK
+rra
+pb
+rra
+sa
+pa
+1 3 5 2 0
+OK
+OK
+sa
+pb
+sa
+ra
+sa
+pa
+2 0 5 1 3
+OK
+OK
+pb
+pb
+ss
+pa
+rra
+pa
+2 0 5 3 1
+OK
+OK
+sa
+pb
+rra
+sa
+pa
+rra
+2 1 5 0 3
+OK
+OK
+sa
+ra
+ra
+sa
+ra
+ra
+2 1 5 3 0
+OK
+OK
+rra
+rra
+sa
+2 3 5 1 0
+OK
+OK
+rra
+rra
+2 3 5 0 1
+OK
+OK
+ra
+sa
+ra
+3 0 5 1 2
+OK
+OK
+ra
+pb
+ra
+sa
+pa
+3 0 5 2 1
+OK
+OK
+sa
+rra
+sa
+rra
+3 1 5 0 2
+OK
+OK
+sa
+rra
+pb
+rra
+sa
+pa
+3 1 5 2 0
+OK
+OK
+sa
+rra
+rra
+3 2 5 0 1
+OK
+OK
+sa
+rra
+rra
+sa
+3 2 5 1 0
+OK
+OK
+rra
+rra
+sa
+ra
+ra
+0 1 2 5 3
+OK
+OK
+pb
+rra
+sa
+pa
+0 1 3 5 2
+KO
+KO
+0 2 1 5 3
+OK
+OK
+rra
+sa
+0 2 3 5 1
+OK
+OK
+pb
+sa
+rra
+sa
+pa
+0 3 1 5 2
+OK
+OK
+pb
+sa
+rra
+pa
+0 3 2 5 1
+OK
+OK
+sa
+rra
+rra
+sa
+ra
+ra
+1 0 2 5 3
+OK
+OK
+sa
+pb
+rra
+sa
+pa
+1 0 3 5 2
+KO
+KO
+1 2 0 5 3
+OK
+OK
+rra
+1 2 3 5 0
+OK
+OK
+pb
+sa
+pb
+rrr
+pa
+pa
+1 3 0 5 2
+OK
+OK
+pb
+sa
+pa
+rra
+1 3 2 5 0
+KO
+KO
+2 0 1 5 3
+OK
+OK
+sa
+rra
+sa
+2 0 3 5 1
+KO
+KO
+2 1 0 5 3
+OK
+OK
+sa
+rra
+2 1 3 5 0
+OK
+OK
+pb
+sa
+pa
+sa
+rra
+2 3 1 5 0
+OK
+OK
+ra
+ra
+sa
+ra
+2 3 0 5 1
+OK
+OK
+ra
+pb
+sa
+ra
+pa
+3 0 1 5 2
+OK
+OK
+sa
+pb
+sa
+rra
+pa
+3 0 2 5 1
+OK
+OK
+ra
+sa
+pb
+sa
+ra
+pa
+3 1 0 5 2
+OK
+OK
+sa
+pb
+sa
+pa
+rra
+3 1 2 5 0
+OK
+OK
+sa
+ra
+ra
+sa
+ra
+3 2 0 5 1
+OK
+OK
+sa
+pb
+sa
+pa
+sa
+rra
+3 2 1 5 0
+OK
+OK
+0 1 2 3 5
+OK
+OK
+pb
+pb
+sa
+pa
+pa
+0 1 3 2 5
+OK
+OK
+pb
+sa
+pa
+0 2 1 3 5
+OK
+OK
+rra
+rra
+sa
+ra
+sa
+0 2 3 1 5
+OK
+OK
+sa
+rra
+sa
+ra
+ra
+0 3 1 2 5
+KO
+KO
+0 3 2 1 5
+OK
+OK
+sa
+1 0 2 3 5
+OK
+OK
+pb
+pb
+ss
+pa
+pa
+1 0 3 2 5
+OK
+OK
+pb
+sa
+pa
+sa
+1 2 0 3 5
+OK
+OK
+rra
+rra
+sa
+ra
+1 2 3 0 5
+OK
+OK
+sa
+rra
+sa
+ra
+ra
+sa
+1 3 0 2 5
+OK
+OK
+ra
+sa
+ra
+ra
+sa
+ra
+1 3 2 0 5
+OK
+OK
+sa
+pb
+sa
+pa
+2 0 1 3 5
+OK
+OK
+sa
+rra
+rra
+sa
+ra
+sa
+2 0 3 1 5
+OK
+OK
+sa
+pb
+sa
+pa
+sa
+2 1 0 3 5
+OK
+OK
+sa
+rra
+rra
+sa
+ra
+2 1 3 0 5
+KO
+KO
+2 3 1 0 5
+OK
+OK
+pb
+rra
+sa
+pa
+rra
+rra
+2 3 0 1 5
+OK
+OK
+rra
+sa
+ra
+ra
+3 0 1 2 5
+OK
+OK
+rra
+sa
+rra
+rra
+sa
+rra
+3 0 2 1 5
+OK
+OK
+rra
+sa
+ra
+ra
+sa
+3 1 0 2 5
+KO

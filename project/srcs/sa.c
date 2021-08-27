@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 11:39:02 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 23:01:51 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sa(t_env *env)
+int	sa(t_env *env)
 {
-	switch_front_two(&env->a);
+	return (switch_front_two(&env->a));
 }

@@ -1,38 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_env.c                                         :+:      :+:    :+:   */
+/*   find_pivot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/22 19:53:11 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 23:35:26 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void		*cpy_content_stack(void *src)
+static void	find_pivot_int(t_list *lst, int *arr, int index)
 {
-	int *value = (int*)malloc(sizeof(int));
-	*value = *(int *)src;
-	return ((void *)value);
+	if (!lst)
+		return ;
+
+	arr[index] = *(int*)lst->content;
+	find_pivot_int(lst->next, arr, index + 1);
 }
 
-void	init_env(t_env *env, const char **argv, int argc)
+void	find_pivot(t_env *env, t_stack stack)
 {
-	env->position_array = NULL;
-	env->pivot1 = 0;
-	env->pivot2 = 0;
-	env->b.head = NULL;
-	env->b.total_item = 0;
-	env->c_b.head = NULL;
-	env->c_b.total_item = 0;
-	env->c_a.head = NULL;
-	env->c_a.total_item = 0;
-	env->action_stack.head = NULL;
-	env->action_stack.total_item = 0;
-	init_a(env, argv, argc);
-	ft_lstcpy(env->a.head, &env->c_a.head, &cpy_content_stack);
-	env->c_a.total_item = env->a.total_item;
+	int		*arr;
+	int		size;
+
+	size = stack.total_item;
+	arr = (int *)malloc(sizeof(int) * size);
+	if (!arr)
+	{
+		free(arr);
+		error(env, ERROR_MALLOC);
+	}
+	find_pivot_int(stack.head, arr, 0);
+	tri_bulle(arr, size);
+	// printf("pv1 %d:%d\n", arr[size / 3], size / 3);
+	// printf("pv2 %d:%d\n", arr[size * 2 / 3], size * 2 / 3);
+	env->pivot1 = arr[size / 3];
+	env->pivot2 = arr[size * 2/ 3];
+	free(arr);
 }

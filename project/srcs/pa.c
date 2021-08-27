@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 10:45:02 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/14 21:44:36 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	pa(t_env *env)
+int	pa(t_env *env)
 {
-	push(&env->b, &env->a);
+	return (push(&env->b, &env->a));
 }

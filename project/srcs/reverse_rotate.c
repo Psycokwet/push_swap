@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 11:41:34 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/22 17:21:47 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,18 @@ static t_list	*ft_lst_before_last(t_list *lst)
 	return (NULL);
 }
 
-void	reverse_rotate(t_stack *stack)
+int	reverse_rotate(t_stack *stack)
 {
 	t_list	*last_then_first;
 	t_list	*before_last;
 
-	if (!stack->head)
-		return ;
+	if (!stack->head || !stack->head->next)
+		return (NO_ACTION_DONE);
 	before_last = ft_lst_before_last(stack->head);
 	if (!before_last)
-		return ;
+		return (NO_ACTION_DONE);
 	last_then_first = before_last->next;
 	before_last->next = NULL;
 	ft_lstadd_front(&stack->head, last_then_first);
+	return (ACTION_DONE);
 }

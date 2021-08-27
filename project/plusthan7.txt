@@ -1,0 +1,232 @@
+
+Test:29 ARGS: 4 0 3 2 1
+
+Naked output
+sa
+pb
+sa
+ra
+ra
+sa
+pa
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+Test:35 ARGS: 4 1 3 2 0
+
+Naked output
+pb
+sa
+rra
+sa
+ra
+pa
+ra
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+
+
+Test:47 ARGS: 4 3 2 1 0
+
+Naked output
+sa
+rra
+pb
+ra
+ra
+sa
+pa
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+Test:59 ARGS: 1 4 3 2 0
+
+Naked output
+pb
+sa
+ra
+ra
+sa
+pa
+sa
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+
+
+Test:98 ARGS: 0 2 1 4 3
+
+Naked output
+pb
+sa
+pb
+sa
+ra
+pa
+pa
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+Test:104 ARGS: 1 2 0 4 3
+
+Naked output
+pb
+sa
+pb
+sa
+rr
+pa
+pa
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+
+
+Test:108 ARGS: 2 0 1 4 3
+
+Naked output
+pb
+pb
+sa
+rr
+pa
+sa
+pa
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+Test:110 ARGS: 2 1 0 4 3
+
+Naked output
+pb
+pb
+sa
+rrr
+pa
+pa
+rra
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+
+
+Test:125 ARGS: 0 3 2 1 4
+
+Naked output
+sa
+rra
+sa
+rra
+rra
+sa
+rra
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+Test:136 ARGS: 2 3 1 0 4
+
+Naked output
+pb
+rra
+sa
+pa
+rra
+rra
+sa
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+
+
+Test:141 ARGS: 3 1 2 0 4
+
+Naked output
+sa
+ra
+sa
+ra
+ra
+sa
+ra
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+Test:142 ARGS: 3 2 0 1 4
+
+Naked output
+sa
+pb
+rra
+sa
+pa
+rra
+rra
+count lines
+7
+checker output
+OK
+my checker output
+OK
+
+Test:143 ARGS: 3 2 1 0 4
+
+Naked output
+sa
+pb
+rra
+sa
+pa
+rra
+rra
+sa
+count lines
+8
+checker output
+OK
+my checker output
+OK

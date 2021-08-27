@@ -16,8 +16,10 @@ MAIN_FILES					=	main.c
 BONUS_FILES					=	bonus.c
 
 SRC_FILES					=	action_stack.c			\
+								check_if_all_bigger.c	\
 								check_order.c			\
 								error.c					\
+								find_pivot.c			\
 								free_env.c				\
 								init_a.c				\
 								init_env.c				\
@@ -40,8 +42,10 @@ SRC_FILES					=	action_stack.c			\
 								sb.c					\
 								ss.c					\
 								start_action_checker.c	\
+								start_action_ps_silent.c\
 								start_action_ps.c		\
-								switch_front_two.c
+								switch_front_two.c		\
+								tri_bulle.c
 
 OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
 OBJMAIN_FILES	= 	$(MAIN_FILES:.c=.o)			## get all .o names from .c names
