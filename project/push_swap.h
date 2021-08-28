@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 12:26:27 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 16:08:50 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_stack
 	t_list_double	*head;
 	t_list_double	*tail;
 	int				total_item;
+	int				bigger_elem;
 }	t_stack;
 
 typedef struct s_env
@@ -102,46 +103,48 @@ typedef struct s_str
 ** ************************************************************************** **
 */
 
-int		check_if_all_bigger(t_stack stack, int threshold);
-int		check_order(t_stack stack);
-void	error(t_env *env, int code);
-void	find_pivot(t_env *env, t_stack stack);
-void	free_env(t_env *env);
-void	init_a(t_env *env, const char **argv, int argc);
-void	init_env(t_env *env, const char **argv, int argc);
-int		pa(t_env *env);
-int		pb(t_env *env);
-int		print_both_from_tail(t_env *env);
-int		print_both(t_env *env);
-void	print_stack_from_tail(t_stack stack);
-void	print_stack(t_stack stack);
-void	push_swap(t_env *env);
-int		push(t_stack *giver, t_stack *taker);
-void	quit(t_env *env, const char *message, int code, int fd);
-int		ra(t_env *env);
-int		rb(t_env *env);
-int		reverse_rotate(t_stack *stack);
-int		rotate(t_stack *stack);
-int		rr(t_env *env);
-int		rra(t_env *env);
-int		rrb(t_env *env);
-int		rrr(t_env *env);
-int		sa(t_env *env);
-int		sb(t_env *env);
-int		ss(t_env *env);
-int		start_action_checker(t_env *env, const char *code);
-int		start_action_ps_silent(t_env *env, int index);
-int		start_action_ps(t_env *env, int index);
-int		switch_front_two(t_stack *stack);
-void	tri_bulle(int *arr, int size);
+int				check_if_all_bigger(t_stack stack, int threshold);
+int				check_order(t_stack stack);
+void			error(t_env *env, int code);
+void			find_pivot(t_env *env, t_stack stack);
+void			free_env(t_env *env);
+t_list_double	*get_absolute_prev(t_stack *stack, t_list_double *elem);
+t_list_double	*get_absolute_next(t_stack *stack, t_list_double *elem);
+void			init_a(t_env *env, const char **argv, int argc);
+void			init_env(t_env *env, const char **argv, int argc);
+int				pa(t_env *env);
+int				pb(t_env *env);
+int				print_both_from_tail(t_env *env);
+int				print_both(t_env *env);
+void			print_stack_from_tail(t_stack stack);
+void			print_stack(t_stack stack);
+void			push_swap(t_env *env);
+int				push(t_stack *giver, t_stack *taker);
+void			quit(t_env *env, const char *message, int code, int fd);
+int				ra(t_env *env);
+int				rb(t_env *env);
+int				reverse_rotate(t_stack *stack);
+int				rotate(t_stack *stack);
+int				rr(t_env *env);
+int				rra(t_env *env);
+int				rrb(t_env *env);
+int				rrr(t_env *env);
+int				sa(t_env *env);
+int				sb(t_env *env);
+int				ss(t_env *env);
+int				start_action_checker(t_env *env, const char *code);
+int				start_action_ps_silent(t_env *env, int index);
+int				start_action_ps(t_env *env, int index);
+int				switch_front_two(t_stack *stack);
+void			tri_bulle(int *arr, int size);
 
-void	optimise_action_stack(t_env *env);
-void	execute_action_stack(t_env *env, int (*fun)(t_env*, int));
-void	add_back_action_stack(t_env *env, int full_id);
-void	clear_action_stack(t_env *env);
-void	fake_free(void* content);
-void	print_action_stack(t_env* env);
-void	upgrade_to_next_possibility(t_env *env);
+void			optimise_action_stack(t_env *env);
+void			execute_action_stack(t_env *env, int (*fun)(t_env*, int));
+void			add_back_action_stack(t_env *env, int full_id);
+void			clear_action_stack(t_env *env);
+void			fake_free(void* content);
+void			print_action_stack(t_env* env);
+void			upgrade_to_next_possibility(t_env *env);
 
 # define MAX_ACTION_TYPE		13
 # define EXIT_ACTION_FOUND		0

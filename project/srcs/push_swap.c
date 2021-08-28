@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 11:56:53 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 16:28:45 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -423,13 +423,12 @@ int		find_index_of(t_env* env, int value)
 	return (-EXIT_FAILURE);
 }
 
-void	algo(t_env *env)
+void	init_position_array(t_env *env)
 {
-	env->position_array = (int *)malloc(sizeof(int) * env->total_item);
-
 	t_list_double	*item;
 	int		i;
 
+	env->position_array = (int *)malloc(sizeof(int) * env->total_item);
 	i = 0;
 	item = env->a.head;
 	while(item){
@@ -437,10 +436,29 @@ void	algo(t_env *env)
 		item = item->next;
 		i++;
 	}
-	print_position_array(env);
+	// print_position_array(env);
 	tri_bulle(env->position_array, env->total_item);
-	print_position_array(env);
-	printf("FIND INDEX OF %d : %d \n", 5, find_index_of(env, 5));
+	// print_position_array(env);
+}
+
+void	algo(t_env *env, int (*fun)(t_env*, int))
+{
+	init_position_array(env);
+	int mid_value = env->position_array[env->total_item / 2];
+	print_both(env);
+	print_both_from_tail(env);
+	while (check_if_all_bigger(env->a, mid_value) == MISC)
+	{
+		if ((*(int*)env->a.head->content) <= mid_value)
+		{
+			fun(env, ACT_ID_P_ + ACT_ID__B);
+			continue;
+		}
+		fun(env, ACT_ID_R_ + ACT_ID__A);
+	}
+	print_both(env);
+	print_both_from_tail(env);
+	// printf("FIND INDEX OF %d : %d \n", 5, find_index_of(env, 5));
 }
 
 void	push_swap(t_env *env)
@@ -462,7 +480,7 @@ void	push_swap(t_env *env)
 		start_brute_force(env);
 		return ;
 	}
-	algo(env);
+	algo(env, &start_action_ps);
 	// else if (env->total_item == 5)
 	// {
 	// 	sort_five(env, &start_action_ps);

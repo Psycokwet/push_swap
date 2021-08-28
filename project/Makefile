@@ -21,6 +21,8 @@ SRC_FILES					=	action_stack.c			\
 								error.c					\
 								find_pivot.c			\
 								free_env.c				\
+								get_absolute_prev.c		\
+								get_absolute_next.c		\
 								init_a.c				\
 								init_env.c				\
 								pa.c					\
