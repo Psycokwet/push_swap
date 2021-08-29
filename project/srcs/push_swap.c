@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 17:04:14 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 21:04:53 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -396,6 +396,18 @@ void	start_brute_force(t_env *env)
 	// print_action_stack(env);
 }
 
+// void	print_pivots(t_env* env)
+// {
+// 	printf("PIVOTS\n A1 [%d]\n A2 [%d]\n B1 [%d]\n B2 [%d]\n", env->pa.p1, env->pa.p2, env->pb.p1, env->pb.p2);
+// }
+
+// void	b_to_a(t_env *env, int (*fun)(t_env*, int))
+// {
+// 	find_pivot(env, env->a, &env->pa);
+// 	find_pivot(env, env->b, &env->pb);
+// 	// print_pivots(env);
+// }
+
 void	algo(t_env *env, int (*fun)(t_env*, int))
 {
 	init_position_array(env);
@@ -412,9 +424,11 @@ void	algo(t_env *env, int (*fun)(t_env*, int))
 		fun(env, ACT_ID_R_ + ACT_ID__A);
 	}
 	print_both(env);
-	print_both_from_tail(env);
+	// print_both_from_tail(env);
 	// printf("FIND INDEX OF %d : %d \n", 5, find_index_of(env, 5));
+	// b_to_a(env, fun);
 }
+
 
 void	push_swap(t_env *env)
 {

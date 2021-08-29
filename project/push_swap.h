@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 17:03:58 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 21:03:30 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,15 @@ static const t_error		g_errors[MAX_ERRORS] = {
 // 	struct s_node	*next;
 // }	t_node;
 
+
+
+typedef struct s_pivot
+{
+	int				p1;
+	int				p2;
+}	t_pivot;
+
+
 typedef struct s_cell
 {
 	int				value;
@@ -90,10 +99,10 @@ typedef struct s_env
 	t_stack	b;
 	t_stack	c_a;
 	t_stack	c_b;
+	// t_pivot pa;
+	// t_pivot pb;
 	int		total_item;
 	t_stack	action_stack;
-	int		pivot1;
-	int		pivot2;
 	int		*position_array;
 }	t_env;
 
@@ -112,7 +121,7 @@ typedef struct s_str
 int				check_if_all_bigger(t_stack stack, int threshold);
 int				check_order(t_stack stack);
 void			error(t_env *env, int code);
-void			find_pivot(t_env *env, t_stack stack);
+void			find_pivot(t_env *env, t_stack stack, t_pivot *pivot);
 void			free_env(t_env *env);
 t_list_double	*get_absolute_prev(t_stack *stack, t_list_double *elem);
 t_list_double	*get_absolute_next(t_stack *stack, t_list_double *elem);

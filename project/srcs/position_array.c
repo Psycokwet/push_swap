@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 17:15:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 17:23:23 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	init_position_array(t_env *env)
 	env->position_array = (int *)malloc(sizeof(int) * env->total_item);
 	i = 0;
 	item = env->a.head;
-	while(item){
+	while (item)
+	{
 		env->position_array[i] = get_value(item->content);
 		item = item->next;
 		i++;
@@ -57,7 +58,8 @@ void	init_position_array(t_env *env)
 	// print_position_array(env);
 
 	item = env->a.head;
-	while(item){
+	while (item)
+	{
 		set_position(item->content, find_index_of(env, get_value(item->content)));
 		item = item->next;
 	}

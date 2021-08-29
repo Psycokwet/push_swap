@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 16:30:50 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 21:09:16 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	parse_one_arg(t_env *env, const char *argv_i, char **splitted)
 	int				tmp;
 	int				is_duplicate;
 	t_list_double	*new_node;
-	int				*value;
+	t_cell			*cell;
 
 	j = 0;
 	while (ft_isdigit(argv_i[j]))
@@ -67,9 +67,8 @@ static int	parse_one_arg(t_env *env, const char *argv_i, char **splitted)
 	is_duplicate = ft_lstdbiter_duplicates(env, env->a.head, tmp);
 	if (is_duplicate != EXIT_SUCCESS)
 		return (is_duplicate);
-	value = (int *)malloc(sizeof(int));
-	*value = tmp;
-	new_node = ft_lstdbnew(value);
+	cell = new_cell(tmp, -1);
+	new_node = ft_lstdbnew(cell);
 	env->total_item++;
 	ft_lstdbadd_back(&(env->a.head), new_node);
 	if (env->a.tail)
