@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 16:24:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 17:14:54 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,15 @@ int get_value(void* content)
 
 int get_position(void* content)
 {
-	return (((t_cell*)content)->value);
+	return (((t_cell*)content)->position);
+}
+
+void set_value(void* content, int value)
+{
+	((t_cell*)content)->value = value;
+}
+
+void set_position(void* content, int position)
+{
+	((t_cell*)content)->position = position;
 }

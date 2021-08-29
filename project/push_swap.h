@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 16:25:23 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 17:03:58 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,12 @@ void			upgrade_to_next_possibility(t_env *env);
 t_cell			*new_cell(int value, int position);
 int				get_value(void* content);
 int				get_position(void* content);
+void			set_value(void* content, int value);
+void			set_position(void* content, int position);
+
+void			print_position_array(t_env *env);
+int				find_index_of(t_env* env, int value);
+void			init_position_array(t_env *env);
 
 # define MAX_ACTION_TYPE		13
 # define EXIT_ACTION_FOUND		0

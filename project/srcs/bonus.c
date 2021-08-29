@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/14 09:05:26 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 17:04:39 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	main(int argc, const char **argv)
 	int		ret_action;
 
 	init_env(&env, argv, argc);
+
+	init_position_array(&env);
 	if (!env.a.head)
 		return (EXIT_SUCCESS);
 	line2 = NULL;

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 16:38:56 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:53:06 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int		cmp_if_bigger(void*seek, void* current)
 	tmp_current = get_value(current);
 	if (get_value(seek) < tmp_current)
 	{
-		((t_cell*)seek)->value = tmp_current;
+		set_value(seek, tmp_current);
 		return (FOUND);
 	}
 	return (NOT_FOUND);

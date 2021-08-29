@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 16:24:51 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:54:12 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 static void	print_stack_int(void *content)
 {
 	ft_putstr_fd("        ", 1);
-	ft_putnbr_fd(*(int *)content, 1);
+	ft_putnbr_fd(get_value(content), 1);
+	ft_putstr_fd(":", 1);
+	ft_putnbr_fd(get_position(content), 1);
 	ft_putstr_fd("\n", 1);
 }
 
