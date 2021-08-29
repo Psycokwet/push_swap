@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 16:08:50 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:25:23 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,12 @@ static const t_error		g_errors[MAX_ERRORS] = {
 // 	int				value;
 // 	struct s_node	*next;
 // }	t_node;
+
+typedef struct s_cell
+{
+	int				value;
+	int				position;
+}	t_cell;
 
 typedef struct s_stack
 {
@@ -145,6 +151,10 @@ void			clear_action_stack(t_env *env);
 void			fake_free(void* content);
 void			print_action_stack(t_env* env);
 void			upgrade_to_next_possibility(t_env *env);
+
+t_cell			*new_cell(int value, int position);
+int				get_value(void* content);
+int				get_position(void* content);
 
 # define MAX_ACTION_TYPE		13
 # define EXIT_ACTION_FOUND		0

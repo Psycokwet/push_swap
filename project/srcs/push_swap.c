@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 16:28:45 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:36:28 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@
 
 void	sort_three(t_env *env, t_stack stack, int base_id, int (*fun)(t_env *, int))
 {
-	int	nb[3] = { *(int*)stack.head->content, *(int*)stack.head->next->content, *(int*)stack.head->next->next->content};
+	int	nb[3] = { get_value(stack.head->content), get_value(stack.head->next->content), get_value(stack.head->next->next->content)};
 
 	if (nb[0] < nb[1] && nb[1] < nb[2])
 		return ;
@@ -351,7 +351,7 @@ void	sort_two(t_env *env, t_stack stack, int base_id, int (*fun)(t_env *, int))
 
 void	*copy_content(void* src, void* dst)
 {
-	*(int*)dst = *(int*)src;
+	((t_cell*)dst)->value = get_value(src);
 	return (dst);
 }
 
@@ -432,7 +432,7 @@ void	init_position_array(t_env *env)
 	i = 0;
 	item = env->a.head;
 	while(item){
-		env->position_array[i] = *(int*)item->content;
+		env->position_array[i] = get_value(item->content);
 		item = item->next;
 		i++;
 	}
@@ -449,7 +449,7 @@ void	algo(t_env *env, int (*fun)(t_env*, int))
 	print_both_from_tail(env);
 	while (check_if_all_bigger(env->a, mid_value) == MISC)
 	{
-		if ((*(int*)env->a.head->content) <= mid_value)
+		if ((get_value(env->a.head->content)) <= mid_value)
 		{
 			fun(env, ACT_ID_P_ + ACT_ID__B);
 			continue;

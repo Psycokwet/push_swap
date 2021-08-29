@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/28 10:28:13 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:38:56 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@
 
 static int		cmp_if_bigger(void*seek, void* current)
 {
-	if (*(int*)seek < *(int*)current)
+	int tmp_current;
+
+	tmp_current = get_value(current);
+	if (get_value(seek) < tmp_current)
 	{
-		*(int*)seek = *(int*)current;
+		((t_cell*)seek)->value = tmp_current;
 		return (FOUND);
 	}
 	return (NOT_FOUND);
@@ -62,13 +65,13 @@ int	push(t_stack *giver, t_stack *taker)
 	if (taker->total_item == 1)
 	{
 		taker->tail = taker->head;
-		taker->bigger_elem = *(int*)taker->tail->content;
+		taker->bigger_elem = get_value(taker->tail->content);
 	}
 	if (giver->total_item >= 1)
 		giver->head->prev = NULL;
-	if (taker->bigger_elem < *(int*)giver_node->content)
-		taker->bigger_elem = *(int*)giver_node->content;
-	if (*(int*)giver_node->content == giver->bigger_elem)
+	if (taker->bigger_elem < get_value(giver_node->content))
+		taker->bigger_elem = get_value(giver_node->content);
+	if (get_value(giver_node->content) == giver->bigger_elem)
 		find_new_bigger_elem(giver);
 	return (ACTION_DONE);
 }

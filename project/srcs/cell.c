@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_if_all_bigger.c                              :+:      :+:    :+:   */
+/*   cell.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 16:30:05 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:24:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-
-static int	check_if_all_bigger_int(t_list_double *lst, int threshold)
+t_cell	*new_cell(int value, int position)
 {
-	if (!lst)
-		return (ONLY_BIGGER);
+	t_cell *cell;
 
-	if (get_value(lst->content) < threshold)
-		return (MISC);
-	return (check_if_all_bigger_int(lst->next, threshold));
+	cell = (t_cell *)malloc(sizeof(t_cell));
+	cell->value = value;
+	cell->position = position;
+	return (cell);
 }
 
-int	check_if_all_bigger(t_stack stack, int threshold)
+int get_value(void* content)
 {
-	if (stack.head)
-		return (check_if_all_bigger_int(stack.head, threshold));
-	return (ONLY_BIGGER);
+	return (((t_cell*)content)->value);
+}
+
+int get_position(void* content)
+{
+	return (((t_cell*)content)->value);
 }
