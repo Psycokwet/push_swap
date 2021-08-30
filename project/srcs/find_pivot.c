@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/30 13:13:43 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/30 17:47:48 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		pivot_size_from_sorted_side(t_env *env, t_stack stack)
 	return (ft_lstdbfind_index(stack.head, (void *)&env->position_array[0], &find_index_in_stack));
 }
 
-void	find_pivot(t_env *env, t_stack stack, t_pivot *pivot, int size)
+void	find_pivot(t_env *env, t_stack stack, int *pivot, int size)
 {
 	int		*arr;
 
@@ -53,9 +53,14 @@ void	find_pivot(t_env *env, t_stack stack, t_pivot *pivot, int size)
 	tri_bulle(arr, size);
 	// printf("pv1 %d:%d\n", arr[size / 3], size / 3);
 	// printf("pv2 %d:%d\n", arr[size * 2 / 3], size * 2 / 3);
-	pivot->p1 = arr[size / 2];
-	// pivot->p2 = arr[size * 2/ 3];
-	// pivot->p1 = arr[size / 3];
-	// pivot->p2 = arr[size * 2/ 3];
+	// pivot->p1 = arr[size / 2];
+	// // pivot->p2 = arr[size * 2/ 3];
+	pivot[0] = arr[size / 3];
+	pivot[1] = arr[size * 2/ 3];
+	// ft_putstr_fd("PWWW ",1);
+	// ft_putnbr_fd(pivot[0],1);
+	// ft_putstr_fd(":",1);
+	// ft_putnbr_fd(pivot[1],1);
+	// ft_putstr_fd("\n",1);
 	free(arr);
 }

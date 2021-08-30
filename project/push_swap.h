@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/30 12:53:46 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/30 16:22:18 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int				check_if_all_bigger(t_stack stack, int threshold);
 int				check_order(t_stack stack);
 void			error(t_env *env, int code);
 int				pivot_size_from_sorted_side(t_env *env, t_stack stack);
-void			find_pivot(t_env *env, t_stack stack, t_pivot *pivot, int size);
+void			find_pivot(t_env *env, t_stack stack, int *pivot, int size);
 void			free_env(t_env *env);
 t_list_double	*get_absolute_prev(t_stack *stack, t_list_double *elem);
 t_list_double	*get_absolute_next(t_stack *stack, t_list_double *elem);

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/22 17:01:50 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/30 17:47:31 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,11 @@ int	start_action_ps(t_env *env, int index)
 		error(env, ERROR_INST_DONT_EXIST_OR_INCORRECT);
 	ft_putstr_fd(g_actions_types[index].code.str, 1);
 	ft_putstr_fd("\n", 1);
-	return (g_actions_types[index].action(env));
+	int tmp = g_actions_types[index].action(env);
+	// ft_putstr_fd("RESULT ACTION ", 1);
+	// ft_putstr_fd(g_actions_types[index].code.str, 1);
+	// ft_putnbr_fd(tmp, 1);
+	// ft_putstr_fd("\n", 1);
+	// print_both(env);
+	return (1);
 }
