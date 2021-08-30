@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 21:03:30 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/30 12:53:46 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@
 
 # define EXIT_NORMAL			0
 
-# define MAX_ERRORS							5
+# define MAX_ERRORS							6
 # define ERROR_NOT_INTEGER					1
 # define ERROR_TOO_BIG	   					2
 # define ERROR_DUPLICATES					3
 # define ERROR_INST_DONT_EXIST_OR_INCORRECT	4
 # define ERROR_MALLOC						5
+# define ERROR_NOT_DEFINED					6
 
 
 typedef struct s_error
@@ -52,6 +53,9 @@ static const t_error		g_errors[MAX_ERRORS] = {
 	(t_error){ERROR_MALLOC,
 		"ERROR_MALLOC",
 		"Local malloc didn't work for some reason"},
+	(t_error){ERROR_NOT_DEFINED,
+		"ERROR_NOT_DEFINED",
+		"Not defined"},
 };
 
 # define ORDERED			0
@@ -83,6 +87,7 @@ typedef struct s_cell
 {
 	int				value;
 	int				position;
+	int				is_sorted;
 }	t_cell;
 
 typedef struct s_stack
@@ -99,8 +104,8 @@ typedef struct s_env
 	t_stack	b;
 	t_stack	c_a;
 	t_stack	c_b;
-	// t_pivot pa;
-	// t_pivot pb;
+	t_pivot pa;
+	t_pivot pb;
 	int		total_item;
 	t_stack	action_stack;
 	int		*position_array;
@@ -121,7 +126,8 @@ typedef struct s_str
 int				check_if_all_bigger(t_stack stack, int threshold);
 int				check_order(t_stack stack);
 void			error(t_env *env, int code);
-void			find_pivot(t_env *env, t_stack stack, t_pivot *pivot);
+int				pivot_size_from_sorted_side(t_env *env, t_stack stack);
+void			find_pivot(t_env *env, t_stack stack, t_pivot *pivot, int size);
 void			free_env(t_env *env);
 t_list_double	*get_absolute_prev(t_stack *stack, t_list_double *elem);
 t_list_double	*get_absolute_next(t_stack *stack, t_list_double *elem);
@@ -166,6 +172,8 @@ int				get_value(void* content);
 int				get_position(void* content);
 void			set_value(void* content, int value);
 void			set_position(void* content, int position);
+int				get_is_sorted(void* content);
+void			set_is_sorted(void* content, int is_sorted);
 
 void			print_position_array(t_env *env);
 int				find_index_of(t_env* env, int value);

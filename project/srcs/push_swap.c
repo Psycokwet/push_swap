@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 21:04:53 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/30 14:08:30 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -401,19 +401,99 @@ void	start_brute_force(t_env *env)
 // 	printf("PIVOTS\n A1 [%d]\n A2 [%d]\n B1 [%d]\n B2 [%d]\n", env->pa.p1, env->pa.p2, env->pb.p1, env->pb.p2);
 // }
 
-// void	b_to_a(t_env *env, int (*fun)(t_env*, int))
-// {
-// 	find_pivot(env, env->a, &env->pa);
-// 	find_pivot(env, env->b, &env->pb);
-// 	// print_pivots(env);
-// }
+void	print_pivots(t_env* env)
+{
+	printf("PIVOTS\n A1 [%d]\n B1 [%d]\n", env->pa.p1, env->pb.p1);
+}
+
+void	rotate_while_sorted(t_env *env, t_stack *stack, int (*fun)(t_env*, int))
+{
+	if (stack->head)
+	{
+		while (get_position(stack->head->content) == 0 || (stack->total_item > 1 && get_position(get_absolute_prev(stack, stack->head)->content) == get_position(stack->head->content) - 1))
+		{
+			fun(env, ACT_ID_R_ + ACT_ID__A);
+		}
+	}
+}
+
+void	validate_sorted_elem(t_env *env, t_stack *stack, t_list_double *elem)
+{
+	t_list_double *prev;
+
+	prev = get_absolute_prev(stack, elem);
+	if (!prev)
+		return ;
+	if (get_is_sorted(prev->content) == true && get_position(prev->content) == get_position(elem->content) - 1)
+		set_is_sorted(elem->content, true);
+}
+
+void	validate_sorted_stack(t_env *env)
+{
+	t_list_double	*current;
+
+	current = env->a.head;
+	while (current)
+	{
+		if (get_position(current->content) == 0)
+			break ;
+		current = current->next;
+	}
+	if (!current)
+		return ;
+	set_is_sorted(current->content, true);
+	while (current)
+	{
+		validate_sorted_elem(env, &env->a, current);
+		current = current->next;
+	}
+}
+
+void	push_if_sorted(t_env *env, int (*fun)(t_env*, int))
+{
+	while (env->b.head && (get_position(env->b.head->content) == 0
+		|| (env->a.head 
+			&& ((get_value(env->b.head->content) <= env->pb.p1
+				&& (get_position(env->a.tail->content) == get_position(env->b.head->content) - 1))
+			|| (get_value(env->b.head->content) >= env->pb.p1
+				&& (get_position(env->a.head->content) == get_position(env->b.head->content) + 1))))))
+	{ 
+		fun(env, ACT_ID_P_ + ACT_ID__A);
+	}
+}
+
+void	b_to_a(t_env *env, int (*fun)(t_env*, int))
+{
+	// find_pivot(env, env->a, &env->pa);
+	find_pivot(env, env->b, &env->pb, env->b.total_item);
+	print_pivots(env);
+	//at least 0 pos is placed now
+
+	while (env->b.total_item > 0)
+	{
+		print_both(env);
+		validate_sorted_stack(env);
+		rotate_while_sorted(env, &env->a, fun);
+		push_if_sorted(env, fun);
+		//should replace by a choice rrb or rb depending on proximity?
+		fun(env, ACT_ID_R_ + ACT_ID__B);
+	}
+	rotate_while_sorted(env, &env->a, fun);
+	validate_sorted_stack(env);
+	printf("STEP 2\n");
+
+	print_both(env);
+
+	find_pivot(env, env->a, &env->pa, pivot_size_from_sorted_side(env, env->a));
+	print_pivots(env);
+
+}
 
 void	algo(t_env *env, int (*fun)(t_env*, int))
 {
 	init_position_array(env);
 	int mid_value = env->position_array[env->total_item / 2];
 	print_both(env);
-	print_both_from_tail(env);
 	while (check_if_all_bigger(env->a, mid_value) == MISC)
 	{
 		if ((get_value(env->a.head->content)) <= mid_value)
@@ -426,7 +506,8 @@ void	algo(t_env *env, int (*fun)(t_env*, int))
 	print_both(env);
 	// print_both_from_tail(env);
 	// printf("FIND INDEX OF %d : %d \n", 5, find_index_of(env, 5));
-	// b_to_a(env, fun);
+	printf("STEP 1\n");
+	b_to_a(env, fun);
 }
 
 

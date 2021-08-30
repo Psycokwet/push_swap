@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 21:05:51 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/29 21:24:44 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void		*cpy_content_stack(void *src)
 void	init_env(t_env *env, const char **argv, int argc)
 {
 	env->position_array = NULL;
-	// env->pa.p1 = 0;
-	// env->pa.p2 = 0;
-	// env->pb.p1 = 0;
-	// env->pb.p2 = 0;
+	env->pa.p1 = MIN_INT;
+	env->pa.p2 = MIN_INT;
+	env->pb.p1 = MIN_INT;
+	env->pb.p2 = MIN_INT;
 	env->b.head = NULL;
 	env->b.tail = NULL;
 	env->b.total_item = 0;
