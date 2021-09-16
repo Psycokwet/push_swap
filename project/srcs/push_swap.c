@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/16 11:03:40 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/16 11:48:32 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -436,23 +436,8 @@ void	push_swap(t_env *env)
 		return ;
 	}
 	init_position_array(env);
-	sort_AtoB(env, env->total_item, &start_action_ps);
-	while(env->b.total_item > 0){
-		start_action_ps(env, ACT_ID_P_ + ACT_ID__A);
-	}
-	// // sort_AtoB(env, env->total_item, &start_action_for_optimization);
-	// // printf(" \n\nRESULLLT \n\n");
-	// int tmp_bef = env->action_stack.total_item;
-	// // print_action_stack(env);
-	// // optimise_action_stack(env);
-	// reset_a_and_b(env);
-	// execute_action_stack(env, &start_action_ps);
-	// // printf("AFTER OPTI %d:%d",tmp_bef, env->action_stack.total_item);
-	// // algo(env, &start_action_ps);
-	
-	// print_both(env);
-	// if (env->b.head == NULL && check_order(env->a) == ORDERED)
-	// 	printf("SUCCESS\n")	;
-	// else
-	// 	printf("FAILE\n")	;
+	sort_AtoB(env, env->total_item, &start_action_for_optimization);
+	optimise_action_stack(env);
+	reset_a_and_b(env);
+	execute_action_stack(env, &start_action_ps);
 }
