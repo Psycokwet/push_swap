@@ -20,6 +20,7 @@ SRC_FILES					=	action_stack.c			\
 								check_if_all_bigger.c	\
 								check_if_all_bigger_until_i.c	\
 								check_order.c			\
+								double_action.c			\
 								check_order_until_i.c	\
 								error.c					\
 								find_pivot.c			\

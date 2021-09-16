@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/31 17:41:13 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/16 11:27:05 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct s_env
 int				check_if_all_bigger(t_stack stack, int threshold);
 int				check_if_all_bigger_until_i(t_stack stack, int threshold, int i);
 int				check_order(t_stack stack);
+int				double_action(t_env *env, int (*fun_a)(t_env*), int (*fun_b)(t_env*));
 int				check_order_until_i(t_stack stack, int i);
 void			error(t_env *env, int code);
 int				pivot_size_from_sorted_side(t_env *env, t_stack stack);
