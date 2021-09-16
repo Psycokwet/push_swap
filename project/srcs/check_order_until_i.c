@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   check_order_until_i.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/16 11:09:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/31 17:40:31 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ss(t_env *env)
+static int	check_order_int(t_list_double *lst, int prev, int i)
 {
-	int sa_ret;
-	int sb_ret;
+	if (!lst || i == 0)
+		return (ORDERED);
+	if (prev >= *(int *)lst->content)
+		return (NOT_ORDERED);
+	return (check_order_int(lst->next, *(int *)lst->content, i - 1));
+}
 
-	sa_ret = sa(env);
-	sb_ret = sb(env);
-	if(sa_ret == ACTION_DONE && sb_ret == ACTION_DONE)
-		return (ACTION_DONE);
-	if(sa_ret == ACTION_DONE || sb_ret == ACTION_DONE)
-		return (INCOMPLETE_ACTION);
-	return (NO_ACTION_DONE);
+int	check_order_until_i(t_stack stack, int i)
+{
+	if (stack.head)
+		return (check_order_int(stack.head, MIN_INT, i));
+	return (ORDERED);
 }

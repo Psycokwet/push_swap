@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 15:45:11 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/31 16:46:44 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int	switch_front_two(t_stack *stack)
 	ft_lstdbadd_front(&(stack->head), second_then_first);
 	second_then_first->prev = NULL;
 	first_then_second->prev = second_then_first;
-	if (first_then_second->next != NULL)
-		return (NO_ACTION_DONE);
+	// if (first_then_second->next != NULL){
+	// 	printf("33\n");
+	// 	return (NO_ACTION_DONE);
+	// 	}
 	return (ACTION_DONE);
 }

@@ -18,7 +18,9 @@ BONUS_FILES					=	bonus.c
 SRC_FILES					=	action_stack.c			\
 								cell.c					\
 								check_if_all_bigger.c	\
+								check_if_all_bigger_until_i.c	\
 								check_order.c			\
+								check_order_until_i.c	\
 								error.c					\
 								find_pivot.c			\
 								free_env.c				\
@@ -48,6 +50,7 @@ SRC_FILES					=	action_stack.c			\
 								sb.c					\
 								ss.c					\
 								start_action_checker.c	\
+								start_action_for_optimization.c	\
 								start_action_ps_silent.c\
 								start_action_ps.c		\
 								switch_front_two.c		\

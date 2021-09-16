@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   check_if_all_bigger_until_i.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/16 11:09:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/31 17:32:59 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ss(t_env *env)
-{
-	int sa_ret;
-	int sb_ret;
 
-	sa_ret = sa(env);
-	sb_ret = sb(env);
-	if(sa_ret == ACTION_DONE && sb_ret == ACTION_DONE)
-		return (ACTION_DONE);
-	if(sa_ret == ACTION_DONE || sb_ret == ACTION_DONE)
-		return (INCOMPLETE_ACTION);
-	return (NO_ACTION_DONE);
+static int	check_if_all_bigger_int(t_list_double *lst, int threshold, int i)
+{
+	if (!lst || i == 0)
+		return (ONLY_BIGGER);
+
+	if (get_value(lst->content) < threshold)
+		return (MISC);
+	return (check_if_all_bigger_int(lst->next, threshold, i - 1));
+}
+
+int	check_if_all_bigger_until_i(t_stack stack, int threshold, int i)
+{
+	if (stack.head)
+		return (check_if_all_bigger_int(stack.head, threshold, i));
+	return (ONLY_BIGGER);
 }

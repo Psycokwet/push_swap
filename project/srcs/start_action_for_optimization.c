@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   start_action_for_optimization.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/16 11:09:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/30 20:37:33 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ss(t_env *env)
+int	start_action_for_optimization(t_env *env, int index)
 {
-	int sa_ret;
-	int sb_ret;
+	int	result;
 
-	sa_ret = sa(env);
-	sb_ret = sb(env);
-	if(sa_ret == ACTION_DONE && sb_ret == ACTION_DONE)
-		return (ACTION_DONE);
-	if(sa_ret == ACTION_DONE || sb_ret == ACTION_DONE)
-		return (INCOMPLETE_ACTION);
-	return (NO_ACTION_DONE);
+	result = start_action_ps_silent(env, index);
+	add_back_action_stack(env, index);
+	return (result);
 }

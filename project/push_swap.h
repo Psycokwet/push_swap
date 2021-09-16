@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/30 16:22:18 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/31 17:41:13 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define ERROR_INST_DONT_EXIST_OR_INCORRECT	4
 # define ERROR_MALLOC						5
 # define ERROR_NOT_DEFINED					6
-
 
 typedef struct s_error
 {
@@ -68,20 +67,11 @@ static const t_error		g_errors[MAX_ERRORS] = {
 
 # define MIN_INT	-2147483648
 
-// typedef struct s_node
-// {
-// 	int				value;
-// 	struct s_node	*next;
-// }	t_node;
-
-
-
 typedef struct s_pivot
 {
 	int				p1;
 	int				p2;
 }	t_pivot;
-
 
 typedef struct s_cell
 {
@@ -98,24 +88,34 @@ typedef struct s_stack
 	int				bigger_elem;
 }	t_stack;
 
-typedef struct s_env
-{
-	t_stack	a;
-	t_stack	b;
-	t_stack	c_a;
-	t_stack	c_b;
-	t_pivot pa;
-	t_pivot pb;
-	int		total_item;
-	t_stack	action_stack;
-	int		*position_array;
-}	t_env;
-
 typedef struct s_str
 {
 	char	*str;
 	size_t	size;
 }			t_str;
+
+typedef struct s_couple
+{
+	int		seek;
+	int		found;
+	int		replacement;
+}			t_couple;
+
+# define MAX_COUPLES			3
+
+typedef struct s_env
+{
+	t_stack		a;
+	t_stack		b;
+	t_stack		c_a;
+	t_stack		c_b;
+	t_pivot		pa;
+	t_pivot		pb;
+	int			total_item;
+	t_stack		action_stack;
+	int			*position_array;
+	t_couple	couples[MAX_COUPLES];
+}	t_env;
 
 /*
 ** ************************************************************************** **
@@ -124,7 +124,9 @@ typedef struct s_str
 */
 
 int				check_if_all_bigger(t_stack stack, int threshold);
+int				check_if_all_bigger_until_i(t_stack stack, int threshold, int i);
 int				check_order(t_stack stack);
+int				check_order_until_i(t_stack stack, int i);
 void			error(t_env *env, int code);
 int				pivot_size_from_sorted_side(t_env *env, t_stack stack);
 void			find_pivot(t_env *env, t_stack stack, int *pivot, int size);
@@ -154,6 +156,7 @@ int				sa(t_env *env);
 int				sb(t_env *env);
 int				ss(t_env *env);
 int				start_action_checker(t_env *env, const char *code);
+int				start_action_for_optimization(t_env *env, int index);
 int				start_action_ps_silent(t_env *env, int index);
 int				start_action_ps(t_env *env, int index);
 int				switch_front_two(t_stack *stack);
@@ -163,20 +166,20 @@ void			optimise_action_stack(t_env *env);
 void			execute_action_stack(t_env *env, int (*fun)(t_env*, int));
 void			add_back_action_stack(t_env *env, int full_id);
 void			clear_action_stack(t_env *env);
-void			fake_free(void* content);
-void			print_action_stack(t_env* env);
+void			fake_free(void *content);
+void			print_action_stack(t_env *env);
 void			upgrade_to_next_possibility(t_env *env);
 
 t_cell			*new_cell(int value, int position);
-int				get_value(void* content);
-int				get_position(void* content);
-void			set_value(void* content, int value);
-void			set_position(void* content, int position);
-int				get_is_sorted(void* content);
-void			set_is_sorted(void* content, int is_sorted);
+int				get_value(void *content);
+int				get_position(void *content);
+void			set_value(void *content, int value);
+void			set_position(void *content, int position);
+int				get_is_sorted(void *content);
+void			set_is_sorted(void *content, int is_sorted);
 
 void			print_position_array(t_env *env);
-int				find_index_of(t_env* env, int value);
+int				find_index_of(t_env *env, int value);
 void			init_position_array(t_env *env);
 
 # define MAX_ACTION_TYPE		13
@@ -185,7 +188,7 @@ void			init_position_array(t_env *env);
 typedef struct s_action_type
 {
 	t_str	code;
-	int	(*action)(t_env	*);
+	int		(*action)(t_env	*);
 }	t_action_type;
 
 # define ACT_ID_S_		0

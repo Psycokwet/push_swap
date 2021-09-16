@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/30 17:51:53 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/16 11:03:40 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,6 +267,7 @@ void	sort_AtoB(t_env *env, int cnt, int (*fun)(t_env *, int));
 void	sort_BtoA(t_env *env, int cnt, int (*fun)(t_env *, int));
 void	rreverse(t_env *env, int ra_cnt, int rb_cnt, int (*fun)(t_env *, int))
 {
+	// printf("RA %d: RB %d:\n", ra_cnt, rb_cnt);
 	int	i;
 
 	i = 0;
@@ -289,6 +290,7 @@ void	rreverse(t_env *env, int ra_cnt, int rb_cnt, int (*fun)(t_env *, int))
 
 void	sort_lowcase(t_env *env, int cnt, int flag, int (*fun)(t_env *, int))
 {
+	// printf("sort_lowcase %d:%d\n",  cnt, flag);
 	if (flag == 1 && cnt == 2)
 	{
 		if (get_value(env->a.head->content) > get_value(env->a.head->next->content))
@@ -317,6 +319,7 @@ void	sort_lowcase(t_env *env, int cnt, int flag, int (*fun)(t_env *, int))
 
 void	sort_BtoA(t_env *env, int cnt, int (*fun)(t_env *, int))
 {
+	// printf("sort_BtoA\n");
 	int ra_cnt = 0;
 	int rb_cnt = 0;
 	int p_cnt = 0;
@@ -325,10 +328,15 @@ void	sort_BtoA(t_env *env, int cnt, int (*fun)(t_env *, int))
 	if (cnt <= 2)
 		return (sort_lowcase(env, cnt, 0, fun));
 	find_pivot(env, env->b, pivots, cnt);
+	// printf("PIVOTS %d:%d:%d\n", pivots[0], pivots[1], cnt);
 	while (cnt--)
 	{
+
+	// printf("PIVOTS %d:%d:%d\n", pivots[0], pivots[1], cnt);
 		if (get_value(env->b.head->content) < pivots[0])
+		{
 			rb_cnt += fun(env, ACT_ID_R_ + ACT_ID__B);
+		}
 		else
 		{
 			p_cnt += fun(env, ACT_ID_P_ + ACT_ID__A);
@@ -336,14 +344,21 @@ void	sort_BtoA(t_env *env, int cnt, int (*fun)(t_env *, int))
 				ra_cnt += fun(env, ACT_ID_R_ + ACT_ID__A);
 		}
 	}
+	// printf("p %d:ra %d:rb %d: cnt %d\n", p_cnt, ra_cnt, rb_cnt, cnt);
 	sort_AtoB(env, p_cnt - ra_cnt, fun);
 	rreverse(env, ra_cnt, rb_cnt, fun);
 	sort_AtoB(env, ra_cnt, fun);
 	sort_BtoA(env, rb_cnt, fun);
+	// sort_AtoB(env, p_cnt - ra_cnt, fun);
+	// rreverse(env, ra_cnt, rb_cnt, fun);
+	// sort_AtoB(env, ra_cnt, fun);
+	// sort_BtoA(env, env->b.total_item, fun);
+	// printf("END sort_BtoA\n");
 }
 
 void	sort_AtoB(t_env *env, int cnt, int (*fun)(t_env *, int))
 {
+	// printf("sort_AtoB\n");
 	int ra_cnt = 0;
 	int rb_cnt = 0;
 	int p_cnt = 0;
@@ -351,13 +366,25 @@ void	sort_AtoB(t_env *env, int cnt, int (*fun)(t_env *, int))
 
 	if (cnt <= 2)
 		return (sort_lowcase(env, cnt, 1, fun));
-	if (check_order(env->a) == ORDERED)
+	if (check_order_until_i(env->a, cnt) == ORDERED)
 		return ;
 	find_pivot(env, env->a, pivots, cnt);
-	while (cnt && check_if_all_bigger(env->a, pivots[1]) == MISC)
+	// printf("PIVOTS %d:%d:%d:%d\n", pivots[0], pivots[1], cnt, check_if_all_bigger(env->a, pivots[1]));
+	// int print = false;
+	// 		if( pivots[0] == 403 && pivots[1] == 406 && cnt == 4)
+	// 			print = true;
+	while (cnt && check_if_all_bigger_until_i(env->a, pivots[1], cnt) == MISC)
 	{
-		if (get_value(env->a.head->content) >= pivots[1])
+
+		// if( print == true){
+			// printf("PIVOTS %d:%d:%d:%d\n", pivots[0], pivots[1], cnt, check_if_all_bigger(env->a, pivots[1]));
+
+		// 	printf("%d\n\n",get_value(env->a.head->content));}
+		if (get_value(env->a.head->content) >= pivots[1]){
+			// if( print == true)
+			// 	print_both(env);
 			ra_cnt += fun(env, ACT_ID_R_ + ACT_ID__A);
+		}
 		else
 		{
 			p_cnt += fun(env, ACT_ID_P_ + ACT_ID__B);
@@ -366,11 +393,19 @@ void	sort_AtoB(t_env *env, int cnt, int (*fun)(t_env *, int))
 		}
 		cnt--;
 	}
+	// printf("p %d:ra %d:rb %d: cnt %d\n", p_cnt, ra_cnt, rb_cnt, cnt);
+
 	rreverse(env, ra_cnt, rb_cnt, fun);
 	ra_cnt += cnt;
 	sort_AtoB(env, ra_cnt, fun);
 	sort_BtoA(env, rb_cnt, fun);
 	sort_BtoA(env, p_cnt - rb_cnt, fun);
+	// rreverse(env, ra_cnt, rb_cnt, fun);
+	// ra_cnt += cnt;
+	// sort_AtoB(env, ra_cnt, fun);
+	// sort_BtoA(env, env->b.total_item, fun);
+	// sort_BtoA(env, p_cnt - rb_cnt, fun);
+	// printf("END sort_AtoB\n");
 }
 
 
@@ -400,6 +435,24 @@ void	push_swap(t_env *env)
 		print_both(env);
 		return ;
 	}
+	init_position_array(env);
 	sort_AtoB(env, env->total_item, &start_action_ps);
-	// algo(env, &start_action_ps);	
+	while(env->b.total_item > 0){
+		start_action_ps(env, ACT_ID_P_ + ACT_ID__A);
+	}
+	// // sort_AtoB(env, env->total_item, &start_action_for_optimization);
+	// // printf(" \n\nRESULLLT \n\n");
+	// int tmp_bef = env->action_stack.total_item;
+	// // print_action_stack(env);
+	// // optimise_action_stack(env);
+	// reset_a_and_b(env);
+	// execute_action_stack(env, &start_action_ps);
+	// // printf("AFTER OPTI %d:%d",tmp_bef, env->action_stack.total_item);
+	// // algo(env, &start_action_ps);
+	
+	// print_both(env);
+	// if (env->b.head == NULL && check_order(env->a) == ORDERED)
+	// 	printf("SUCCESS\n")	;
+	// else
+	// 	printf("FAILE\n")	;
 }
