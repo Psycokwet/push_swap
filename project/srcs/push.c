@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 16:53:06 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/17 11:03:48 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #define NOT_FOUND 1
 #define ERROR 2
 
-static int		cmp_if_bigger(void*seek, void* current)
+static int	cmp_if_bigger(void *seek, void *current)
 {
-	int tmp_current;
+	int	tmp_current;
 
 	tmp_current = get_value(current);
 	if (get_value(seek) < tmp_current)
@@ -38,12 +38,12 @@ void	find_new_bigger_elem(t_stack *stack)
 	result = -1;
 	bigger_int = MIN_INT;
 	found = NULL;
-	result = ft_lstdbfind_best_match(stack->head, &found, &bigger_int, &cmp_if_bigger);
+	result = ft_lstdbfind_best_match(stack->head, &found, &bigger_int,
+			&cmp_if_bigger);
 	if (result == FOUND)
 		stack->bigger_elem = bigger_int;
 	else
 		stack->bigger_elem = MIN_INT;
-	//else	 ERROR
 }
 
 int	push(t_stack *giver, t_stack *taker)
@@ -52,7 +52,6 @@ int	push(t_stack *giver, t_stack *taker)
 
 	if (giver->head == NULL)
 		return (NO_ACTION_DONE);
-
 	if (taker->total_item == 1)
 		taker->tail = taker->head;
 	giver_node = giver->head;

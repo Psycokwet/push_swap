@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 22:22:08 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/17 10:57:27 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	print_stack_int(void *content)
 	ft_putstr_fd(":", 1);
 	ft_putnbr_fd(get_position(content), 1);
 	ft_putstr_fd(":", 1);
-	if(get_is_sorted(content) == 1)
+	if (get_is_sorted(content) == 1)
 		ft_putstr_fd("true", 1);
 	else
 		ft_putstr_fd("false", 1);

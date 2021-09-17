@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 15:47:05 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/17 10:54:40 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #define FOUND_LAST	1
 #define SET_LAST	2
 
-static int	ft_lstdb_before_last_int(t_list_double *lst, t_list_double **before_last)
+static int	ft_lstdb_before_last_int(t_list_double *lst,
+t_list_double **before_last)
 {
 	int	result;
 

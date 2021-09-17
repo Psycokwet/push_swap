@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 17:23:23 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:18:34 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 void	print_position_array(t_env *env)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < env->total_item)
+	while (i < env->total_item)
 	{
-		printf("[%d]:%d ", i, env->position_array[i]);
+		ft_putstr_fd("[", 1);
+		ft_putnbr_fd(i, 1);
+		ft_putstr_fd("]:", 1);
+		ft_putnbr_fd(env->position_array[i], 1);
+		ft_putstr_fd(" ", 1);
 		i++;
 	}
-	printf("\n");
+	ft_putstr_fd("\n", 1);
 }
 
-int		find_index_of(t_env* env, int value)
+int	find_index_of(t_env *env, int value)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < env->total_item)
@@ -42,7 +46,7 @@ int		find_index_of(t_env* env, int value)
 void	init_position_array(t_env *env)
 {
 	t_list_double	*item;
-	int		i;
+	int				i;
 
 	env->position_array = (int *)malloc(sizeof(int) * env->total_item);
 	i = 0;
@@ -53,14 +57,12 @@ void	init_position_array(t_env *env)
 		item = item->next;
 		i++;
 	}
-	// print_position_array(env);
 	tri_bulle(env->position_array, env->total_item);
-	// print_position_array(env);
-
 	item = env->a.head;
 	while (item)
 	{
-		set_position(item->content, find_index_of(env, get_value(item->content)));
+		set_position(item->content, find_index_of(env,
+				get_value(item->content)));
 		item = item->next;
 	}
 }

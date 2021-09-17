@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 21:09:16 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/17 11:12:05 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static int	parse_value(t_env *env, char const *arg, char **splitted)
 	return (tmp);
 }
 
-static int	ft_lstdbiter_duplicates(t_env *env, t_list_double *lst, int new_value)
+static int	ft_lstdbiter_duplicates(t_env *env, t_list_double *lst,
+int new_value)
 {
 	int	intermediate_result;
 
@@ -72,9 +73,7 @@ static int	parse_one_arg(t_env *env, const char *argv_i, char **splitted)
 	env->total_item++;
 	ft_lstdbadd_back(&(env->a.head), new_node);
 	if (env->a.tail)
-	{
 		new_node->prev = env->a.tail;
-	}
 	if (get_value(new_node->content) > env->a.bigger_elem)
 		env->a.bigger_elem = get_value(new_node->content);
 	env->a.tail = new_node;
