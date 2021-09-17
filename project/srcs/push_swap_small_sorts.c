@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/17 14:59:05 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/17 15:30:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ void	sort_five(t_env *env, int (*fun)(t_env *, int))
 	switch_position(env, env->a, ACT_ID__A, fun);
 }
 
+// if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] < nb[2]) // 2>1<3
+// if (nb[0] > nb[1] && nb[1] > nb[2] && nb[0] > nb[2]) //3>2>1
+// if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] > nb[2]) //3>1<2
+// if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] < nb[2]) // 1<3>2
+// if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] > nb[2]) //2<3>1
 void	sort_three(t_env *env, t_stack stack, int base_id,
 int (*fun)(t_env *, int))
 {
@@ -76,21 +81,21 @@ int (*fun)(t_env *, int))
 	nb[2] = get_value(stack.head->next->next->content);
 	if (nb[0] < nb[1] && nb[1] < nb[2])
 		return ;
-	if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] < nb[2]) // 2>1<3
+	if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] < nb[2])
 		fun(env, ACT_ID_S_ + base_id);
-	else if (nb[0] > nb[1] && nb[1] > nb[2] && nb[0] > nb[2]) //3>2>1
+	else if (nb[0] > nb[1] && nb[1] > nb[2] && nb[0] > nb[2])
 	{
 		fun(env, ACT_ID_S_ + base_id);
 		fun(env, ACT_ID_RR_ + base_id);
 	}
-	else if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] > nb[2]) //3>1<2
+	else if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] > nb[2])
 		fun(env, ACT_ID_R_ + base_id);
-	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] < nb[2]) // 1<3>2
+	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] < nb[2])
 	{
 		fun(env, ACT_ID_S_ + base_id);
 		fun(env, ACT_ID_R_ + base_id);
 	}
-	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] > nb[2]) //2<3>1
+	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] > nb[2])
 		fun(env, ACT_ID_RR_ + base_id);
 }
 
