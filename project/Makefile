@@ -15,7 +15,10 @@ HEADERS_FILES				=	push_swap.h
 MAIN_FILES					=	main.c
 BONUS_FILES					=	bonus.c
 
-SRC_FILES					=	action_stack.c			\
+SRC_FILES					=	action_stack_brut_force.c			\
+								action_stack_optimize_int.c			\
+								action_stack_optimize.c			\
+								action_stack.c			\
 								cell_setters.c					\
 								cell.c					\
 								check_if_all_bigger.c	\

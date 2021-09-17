@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/16 11:48:32 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/17 14:53:57 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,24 +132,6 @@ void	reset_a_and_b(t_env *env)
 	while(env->b.total_item > 0)
 		pa(env);
 	ft_lstdbreset(env->c_a.head, env->a.head, &copy_content);
-}
-
-void	start_brute_force(t_env *env)
-{
-	int i = 0;
-	while(env->action_stack.total_item < 15){
-		upgrade_to_next_possibility(env);
-		execute_action_stack(env, &start_action_ps_silent);
-
-		if (env->b.head == NULL && check_order(env->a) == ORDERED)
-		{
-			reset_a_and_b(env);
-			execute_action_stack(env, &start_action_ps);
-			return;
-		}
-		reset_a_and_b(env);
-		i++;
-	}
 }
 
 void	print_pivots(t_env* env)
