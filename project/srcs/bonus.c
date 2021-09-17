@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/29 17:04:39 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/17 11:02:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 static int	print_result(t_env *env)
 {
 	if (env->b.head == NULL && check_order(env->a) == ORDERED)
-		printf("OK\n");
+		ft_putstr_fd("OK\n", 1);
 	else
-		printf("KO\n");
+		ft_putstr_fd("KO\n", 1);
 	free_env(env);
 	return (EXIT_SUCCESS);
 }
@@ -34,7 +34,6 @@ int	main(int argc, const char **argv)
 	int		ret_action;
 
 	init_env(&env, argv, argc);
-
 	init_position_array(&env);
 	if (!env.a.head)
 		return (EXIT_SUCCESS);
