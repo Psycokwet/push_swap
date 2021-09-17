@@ -6,27 +6,12 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/17 15:05:56 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/17 15:09:21 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	*copy_content(void* src, void* dst)
-{
-	set_value(dst, get_value(src));
-	return (dst);
-}
-
-void	reset_a_and_b(t_env *env)
-{
-	while(env->b.total_item > 0)
-		pa(env);
-	ft_lstdbreset(env->c_a.head, env->a.head, &copy_content);
-}
-
-void	sort_AtoB(t_env *env, int cnt, int (*fun)(t_env *, int));
-void	sort_BtoA(t_env *env, int cnt, int (*fun)(t_env *, int));
 void	rreverse(t_env *env, int ra_cnt, int rb_cnt, int (*fun)(t_env *, int))
 {
 	// printf("RA %d: RB %d:\n", ra_cnt, rb_cnt);
@@ -79,9 +64,9 @@ void	sort_lowcase(t_env *env, int cnt, int flag, int (*fun)(t_env *, int))
 	}
 }
 
-void	sort_BtoA(t_env *env, int cnt, int (*fun)(t_env *, int))
+void	sort_b_to_a(t_env *env, int cnt, int (*fun)(t_env *, int))
 {
-	// printf("sort_BtoA\n");
+	// printf("sort_b_to_a\n");
 	int ra_cnt = 0;
 	int rb_cnt = 0;
 	int p_cnt = 0;
@@ -107,20 +92,20 @@ void	sort_BtoA(t_env *env, int cnt, int (*fun)(t_env *, int))
 		}
 	}
 	// printf("p %d:ra %d:rb %d: cnt %d\n", p_cnt, ra_cnt, rb_cnt, cnt);
-	sort_AtoB(env, p_cnt - ra_cnt, fun);
+	sort_a_to_b(env, p_cnt - ra_cnt, fun);
 	rreverse(env, ra_cnt, rb_cnt, fun);
-	sort_AtoB(env, ra_cnt, fun);
-	sort_BtoA(env, rb_cnt, fun);
-	// sort_AtoB(env, p_cnt - ra_cnt, fun);
+	sort_a_to_b(env, ra_cnt, fun);
+	sort_b_to_a(env, rb_cnt, fun);
+	// sort_a_to_b(env, p_cnt - ra_cnt, fun);
 	// rreverse(env, ra_cnt, rb_cnt, fun);
-	// sort_AtoB(env, ra_cnt, fun);
-	// sort_BtoA(env, env->b.total_item, fun);
-	// printf("END sort_BtoA\n");
+	// sort_a_to_b(env, ra_cnt, fun);
+	// sort_b_to_a(env, env->b.total_item, fun);
+	// printf("END sort_b_to_a\n");
 }
 
-void	sort_AtoB(t_env *env, int cnt, int (*fun)(t_env *, int))
+void	sort_a_to_b(t_env *env, int cnt, int (*fun)(t_env *, int))
 {
-	// printf("sort_AtoB\n");
+	// printf("sort_a_to_b\n");
 	int ra_cnt = 0;
 	int rb_cnt = 0;
 	int p_cnt = 0;
@@ -159,15 +144,15 @@ void	sort_AtoB(t_env *env, int cnt, int (*fun)(t_env *, int))
 
 	rreverse(env, ra_cnt, rb_cnt, fun);
 	ra_cnt += cnt;
-	sort_AtoB(env, ra_cnt, fun);
-	sort_BtoA(env, rb_cnt, fun);
-	sort_BtoA(env, p_cnt - rb_cnt, fun);
+	sort_a_to_b(env, ra_cnt, fun);
+	sort_b_to_a(env, rb_cnt, fun);
+	sort_b_to_a(env, p_cnt - rb_cnt, fun);
 	// rreverse(env, ra_cnt, rb_cnt, fun);
 	// ra_cnt += cnt;
-	// sort_AtoB(env, ra_cnt, fun);
-	// sort_BtoA(env, env->b.total_item, fun);
-	// sort_BtoA(env, p_cnt - rb_cnt, fun);
-	// printf("END sort_AtoB\n");
+	// sort_a_to_b(env, ra_cnt, fun);
+	// sort_b_to_a(env, env->b.total_item, fun);
+	// sort_b_to_a(env, p_cnt - rb_cnt, fun);
+	// printf("END sort_a_to_b\n");
 }
 
 void	push_swap(t_env *env)
@@ -196,7 +181,7 @@ void	push_swap(t_env *env)
 		return ;
 	}
 	init_position_array(env);
-	sort_AtoB(env, env->total_item, &start_action_for_optimization);
+	sort_a_to_b(env, env->total_item, &start_action_for_optimization);
 	optimise_action_stack(env);
 	reset_a_and_b(env);
 	execute_action_stack(env, &start_action_ps);
