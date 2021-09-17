@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_action_ps.c                                  :+:      :+:    :+:   */
+/*   cell_setters.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/16 14:19:31 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/17 11:01:18 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	start_action_ps(t_env *env, int index)
+t_cell	*new_cell(int value, int position)
 {
-	int	tmp;
+	t_cell	*cell;
 
-	if (index >= MAX_ACTION_TYPE)
-		error(env, ERROR_INST_DONT_EXIST_OR_INCORRECT);
-	tmp = g_actions_types[index].action(env);
-	if (tmp == INCOMPLETE_ACTION || tmp == ACTION_DONE)
-	{
-		ft_putstr_fd(g_actions_types[index].code.str, 1);
-		ft_putstr_fd("\n", 1);
-		return (1);
-	}
-	return (1);
+	cell = (t_cell *)malloc(sizeof(t_cell));
+	cell->value = value;
+	cell->position = position;
+	cell->is_sorted = false;
+	return (cell);
+}
+
+void	set_value(void *content, int value)
+{
+	((t_cell *)content)->value = value;
+}
+
+void	set_position(void *content, int position)
+{
+	((t_cell *)content)->position = position;
+}
+
+void	set_is_sorted(void *content, int is_sorted)
+{
+	((t_cell *)content)->is_sorted = is_sorted;
 }

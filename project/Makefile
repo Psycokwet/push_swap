@@ -16,6 +16,7 @@ MAIN_FILES					=	main.c
 BONUS_FILES					=	bonus.c
 
 SRC_FILES					=	action_stack.c			\
+								cell_setters.c					\
 								cell.c					\
 								check_if_all_bigger.c	\
 								check_if_all_bigger_until_i.c	\
