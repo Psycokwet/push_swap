@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/17 15:28:48 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/18 21:46:33 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int				double_action(t_env *env, int (*fun_a)(t_env*),
 int				check_order_until_i(t_stack stack, int i);
 void			error(t_env *env, int code);
 int				pivot_size_from_sorted_side(t_env *env, t_stack stack);
-void			find_pivot(t_env *env, t_stack stack, int *pivot, int size);
+void			find_pivots(t_env *env, t_stack stack, int *pivot, int size);
 void			free_env(t_env *env);
 t_list_double	*get_absolute_prev(t_stack *stack, t_list_double *elem);
 t_list_double	*get_absolute_next(t_stack *stack, t_list_double *elem);
@@ -203,13 +203,13 @@ void			validate_sorted_stack(t_env *env);
 void			push_if_sorted(t_env *env, int (*fun)(t_env*, int));
 void			b_to_a(t_env *env, int (*fun)(t_env*, int));
 void			algo(t_env *env, int (*fun)(t_env*, int));
-void			sort_a_to_b(t_env *env, int cnt,
+void			sort_a_to_b(t_env *env, int counter,
 					int (*fun)(t_env *, int));
-void			sort_b_to_a(t_env *env, int cnt,
+void			sort_b_to_a(t_env *env, int counter,
 					int (*fun)(t_env *, int));
-void			rreverse(t_env *env, int ra_cnt, int rb_cnt,
+void			roll_back_to_order(t_env *env, int* counters,
 					int (*fun)(t_env *, int));
-void			sort_b_up_to_2(t_env *env, int cnt,
+void			sort_b_up_to_2(t_env *env, int counter,
 					int (*fun)(t_env *, int));
 
 # define MAX_ACTION_TYPE		13

@@ -6,42 +6,46 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/17 15:25:41 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/18 21:47:55 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rreverse(t_env *env, int ra_cnt, int rb_cnt, int (*fun)(t_env *, int))
+#define RA	0
+#define RB	1
+#define P	2
+
+void	roll_back_to_order(t_env *env, int *counters, int (*fun)(t_env *, int))
 {
 	int	i;
 
 	i = 0;
-	while (i < ra_cnt && i < rb_cnt)
+	while (i < counters[RA] && i < counters[RB])
 	{
 		fun(env, ACT_ID_RRR);
 		++i;
 	}
-	while (i < ra_cnt)
+	while (i < counters[RA])
 	{
 		fun(env, ACT_ID_RR_ + ACT_ID__A);
 		++i;
 	}
-	while (i < rb_cnt)
+	while (i < counters[RB])
 	{
 		fun(env, ACT_ID_RR_ + ACT_ID__B);
 		++i;
 	}
 }
 
-void	sort_b_up_to_2(t_env *env, int cnt, int (*fun)(t_env *, int))
+void	sort_b_up_to_2(t_env *env, int counter, int (*fun)(t_env *, int))
 {
-	if (cnt == 1)
+	if (counter == 1)
 	{
 		fun(env, ACT_ID_P_ + ACT_ID__A);
 		return ;
 	}
-	else if (cnt != 2)
+	else if (counter != 2)
 		return ;
 	if (get_value(env->b.head->content) > get_value(env->b.head->next->content))
 	{
@@ -56,20 +60,16 @@ void	sort_b_up_to_2(t_env *env, int cnt, int (*fun)(t_env *, int))
 	}
 }
 
-#define RA	0
-#define RB	1
-#define P	2
-
-void	sort_b_to_a(t_env *env, int cnt, int (*fun)(t_env *, int))
+void	sort_b_to_a(t_env *env, int counter, int (*fun)(t_env *, int))
 {
 	int	counters[3];
 	int	pivots[2];
 
 	ft_memset(counters, 0, sizeof(int) * 3);
-	if (cnt <= 2)
-		return (sort_b_up_to_2(env, cnt, fun));
-	find_pivot(env, env->b, pivots, cnt);
-	while (cnt--)
+	if (counter <= 2)
+		return (sort_b_up_to_2(env, counter, fun));
+	find_pivots(env, env->b, pivots, counter);
+	while (counter--)
 	{
 		if (get_value(env->b.head->content) < pivots[0])
 			counters[RB] += fun(env, ACT_ID_R_ + ACT_ID__B);
@@ -81,23 +81,23 @@ void	sort_b_to_a(t_env *env, int cnt, int (*fun)(t_env *, int))
 		}
 	}
 	sort_a_to_b(env, counters[P] - counters[RA], fun);
-	rreverse(env, counters[RA], counters[RB], fun);
+	roll_back_to_order(env, counters, fun);
 	sort_a_to_b(env, counters[RA], fun);
 	sort_b_to_a(env, counters[RB], fun);
 }
 
-void	sort_a_to_b(t_env *env, int cnt, int (*fun)(t_env *, int))
+void	sort_a_to_b(t_env *env, int counter, int (*fun)(t_env *, int))
 {
 	int	counters[3];
 	int	pivots[2];
 
 	ft_memset(counters, 0, sizeof(int) * 3);
-	if (cnt <= 2)
+	if (counter <= 2)
 		return (sort_two(env, env->a, ACT_ID__A, fun));
-	if (check_order_until_i(env->a, cnt) == ORDERED)
+	if (check_order_until_i(env->a, counter) == ORDERED)
 		return ;
-	find_pivot(env, env->a, pivots, cnt);
-	while (cnt && check_if_all_bigger_until_i(env->a, pivots[1], cnt) == MISC)
+	find_pivots(env, env->a, pivots, counter);
+	while (counter && check_if_all_bigger_until_i(env->a, pivots[1], counter) == MISC)
 	{
 		if (get_value(env->a.head->content) >= pivots[1])
 			counters[RA] += fun(env, ACT_ID_R_ + ACT_ID__A);
@@ -107,10 +107,10 @@ void	sort_a_to_b(t_env *env, int cnt, int (*fun)(t_env *, int))
 			if (get_value(env->b.head->content) >= pivots[0])
 				counters[RB] += fun(env, ACT_ID_R_ + ACT_ID__B);
 		}
-		cnt--;
+		counter--;
 	}
-	rreverse(env, counters[RA], counters[RB], fun);
-	counters[RA] += cnt;
+	roll_back_to_order(env, counters, fun);
+	counters[RA] += counter;
 	sort_a_to_b(env, counters[RA], fun);
 	sort_b_to_a(env, counters[RB], fun);
 	sort_b_to_a(env, counters[P] - counters[RB], fun);

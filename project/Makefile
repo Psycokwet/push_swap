@@ -27,7 +27,7 @@ SRC_FILES					=	action_stack_brut_force.c			\
 								double_action.c			\
 								check_order_until_i.c	\
 								error.c					\
-								find_pivot.c			\
+								find_pivots.c			\
 								free_env.c				\
 								get_absolute_prev.c		\
 								get_absolute_next.c		\

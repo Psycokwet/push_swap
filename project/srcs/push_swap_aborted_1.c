@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/16 15:43:35 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/18 21:44:50 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	push_if_sorted(t_env *env, int (*fun)(t_env*, int))
 
 void	b_to_a(t_env *env, int (*fun)(t_env*, int))
 {
-	find_pivot(env, env->b, &env->pb, env->b.total_item);
+	find_pivots(env, env->b, &env->pb, env->b.total_item);
 	while (env->b.total_item > 0)
 	{
 		print_both(env);
@@ -83,5 +83,5 @@ void	b_to_a(t_env *env, int (*fun)(t_env*, int))
 	rotate_while_sorted(env, &env->a, fun);
 	validate_sorted_stack(env);
 	print_both(env);
-	find_pivot(env, env->a, &env->pa, pivot_size_from_sorted_side(env, env->a));
+	find_pivots(env, env->a, &env->pa, pivot_size_from_sorted_side(env, env->a));
 }

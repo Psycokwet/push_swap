@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_pivot.c                                       :+:      :+:    :+:   */
+/*   find_pivots.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/16 14:21:04 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/18 21:44:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	pivot_size_from_sorted_side(t_env *env, t_stack stack)
 			&find_index_in_stack));
 }
 
-void	find_pivot(t_env *env, t_stack stack, int *pivot, int size)
+void	find_pivots(t_env *env, t_stack stack, int *pivot, int size)
 {
 	int		*arr;
 

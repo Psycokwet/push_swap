@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/17 15:30:22 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/18 21:52:28 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int (*fun)(t_env*, int))
 void	sort_five(t_env *env, int (*fun)(t_env *, int))
 {
 	init_position_array(env);
-	print_position_array(env);
 	fun(env, ACT_ID_P_ + ACT_ID__B);
 	fun(env, ACT_ID_P_ + ACT_ID__B);
 	sort_three(env, env->a, ACT_ID__A, fun);
