@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/18 21:46:33 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/10/17 18:01:54 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,10 +207,15 @@ void			sort_a_to_b(t_env *env, int counter,
 					int (*fun)(t_env *, int));
 void			sort_b_to_a(t_env *env, int counter,
 					int (*fun)(t_env *, int));
-void			roll_back_to_order(t_env *env, int* counters,
+void			roll_back_to_order(t_env *env, int *counters,
 					int (*fun)(t_env *, int));
 void			sort_b_up_to_2(t_env *env, int counter,
 					int (*fun)(t_env *, int));
+void			init_couples(t_env *env);
+int				test_couple(t_env *env, t_list_double *current, int index);
+void			try_to_fill_couple(t_env *env, t_list_double *current,
+					int index);
+void			optimise_action_from_node(t_env *env, t_list_double *current);
 
 # define MAX_ACTION_TYPE		13
 # define EXIT_ACTION_FOUND		0

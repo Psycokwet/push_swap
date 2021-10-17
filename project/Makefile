@@ -40,10 +40,9 @@ SRC_FILES					=	action_stack_brut_force.c			\
 								print_both.c			\
 								print_stack_from_tail.c	\
 								print_stack.c			\
-								push_swap_aborted_1.c				\
-								push_swap_aborted_2.c				\
 								push_swap_optimize.c				\
 								push_swap_small_sorts.c				\
+								push_swap_sort_stacks.c \
 								push_swap.c				\
 								push.c					\
 								quit.c					\

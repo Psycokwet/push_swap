@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/09/17 09:44:07 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/10/17 18:02:42 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_list_double *action, int state)
 int	upgrade_to_next_possibility_int_after_rec(t_env *env,
 t_list_double *action, int ret)
 {
+	(void)env;
 	if (ret == ADD_NEW_ACTION)
 	{
 		*(int *)action->content = 0;
